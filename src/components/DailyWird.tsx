@@ -2,7 +2,6 @@ import { useId, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { sessions } from '../content'
 import { Arrow } from './Primitives'
-import { Mark } from './Brand'
 
 export function DailyWird() {
   const [selected, setSelected] = useState(0)
@@ -29,12 +28,10 @@ export function DailyWird() {
       <p className="scene-note">اختر وقفة لتتعرّف إليها.</p>
     </div>
     <div className="session-detail" role="tabpanel" tabIndex={0} id={id + '-panel'} aria-labelledby={id + '-tab-' + selected}>
-      <span className="session-mark"><Mark /></span>
       <p className="scene-label">مساحة للذكر</p>
       <h3>{session.title}</h3>
       <p>{session.description}</p>
       <span className="session-closing">{session.note}</span>
-      <div className="reading-lines" aria-hidden="true"><i /><i /><i /></div>
       <p className="scene-note">تقرأ. تُكمل. وتمضي إلى يومك.</p>
     </div>
   </div>

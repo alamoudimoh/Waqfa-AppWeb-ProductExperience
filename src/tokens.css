@@ -58,15 +58,10 @@
   --wordmark: var(--gold);
 }
 
-/* The six moments are compositions of existing environments, not new modes.
-   Fajr: Navy → Emerald panel. Morning: Ivory. Noon: raised Ivory surface.
-   Asr: Ivory secondary. Maghrib: Emerald panel. Night: Emerald base. */
-[data-phase="dawn"] { --phase-surface: var(--navy); }
-[data-phase="morning"] { --phase-surface: var(--ivory); }
-[data-phase="noon"] { --phase-surface: var(--ivory-surface); }
-[data-phase="afternoon"] { --phase-surface: var(--ivory-secondary); --muted: var(--ivory-ink); }
-[data-phase="sunset"] { --phase-surface: var(--emerald-panel); }
-[data-phase="night"] { --phase-surface: var(--emerald); }
+/* V2 paints the complete day on one shared canvas in styles.css.
+   Section themes select foreground / interaction semantics, not backgrounds.
+   Use primary ink for the quiet afternoon text over Ivory secondary. */
+[data-phase="afternoon"] { --muted: var(--ivory-ink); }
 
 @media (prefers-contrast: more) {
   :root, [data-theme="light"] { --muted: var(--ivory-ink); --line: var(--ivory-muted); }
