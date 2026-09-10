@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<!--
+  Waqfa (وقفة) — Visual Brand Identity Book version approved
+  Built from the canonical brand-book structure. Themes: Sovereign (fixed) + Ivory + Emerald,
+  both drawn token-for-token from the WCAG-audited Waqfa Colour System v2.0.
+  Typography: Cairo + Amiri for the Waqfa themes per Mohammed's standing decision.
+-->
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waqfa — Visual Brand Identity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        system: {
+                            base:    '#08211D',
+                            panel:   '#0F3E36',
+                            card:    '#153F38',
+                            border:  '#5D9187',
+                            accent:  '#C5A880',
+                            accent2: '#D3BEA0',
+                            ink1:    '#EBF4F3',
+                            ink2:    '#ACD2CC',
+                            ink3:    '#6D8C87',
+                            ink4:    '#153F38',
+                        },
+                        mohammed: {
+                            base:    '#09090E',
+                            panel:   '#0F0F17',
+                            card:    '#14141E',
+                            border:  '#1E1E2E',
+                            gold:    '#D4980A',
+                            gold2:   '#F0B429',
+                            ink1:    '#F0EEF8',
+                            ink2:    '#9B97B3',
+                            ink3:    '#5A5670',
+                            ink4:    '#2E2B3F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Cairo"', 'sans-serif'],
+                        arabic: ['"Cairo"', 'sans-serif'],
+                        amiri: ['"Amiri"', 'serif'],
+                        mono:  ['"Ubuntu Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #08211D; color: #EBF4F3; }
+
+        /* Scrollbar — System Color */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #08211D; }
+        ::-webkit-scrollbar-thumb {
+            background: #5D9187;
+            border-radius: 9999px;
+            transition: background 0.2s;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #C5A880; }
+        ::-webkit-scrollbar-corner { background: #08211D; }
+        * { scrollbar-width: thin; scrollbar-color: #5D9187 #08211D; }
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(197,168,128,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197,168,128,0.05) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .gold-glow { box-shadow: 0 0 40px rgba(197,168,128,0.10), 0 0 80px rgba(197,168,128,0.04); }
+        .card-hover { transition: all 0.25s ease; }
+        .card-hover:hover { transform: translateY(-3px); border-color: rgba(197,168,128,0.35) !important; }
+        @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        .float-anim { animation: float 4s ease-in-out infinite; }
+        .mono { font-family: 'Ubuntu Mono', monospace; }
+        .arabic { font-family: 'Cairo', sans-serif; }
+        .amiri { font-family: 'Amiri', serif; }
+        svg:has(> use[href='#waqfa-mark-book']) { aspect-ratio: 2048 / 2043; }
+        .logo-on-light { --wlogo-a:#0F3E36; --wlogo-b:#0F1140; --wlogo-gold:#C5A880; }
+        .logo-on-dark  { --wlogo-a:#F2F2F2; --wlogo-b:#6D8C87; --wlogo-gold:#C5A880; }
+        pre { direction: ltr; text-align: left; }
+        .tab-active { background: rgba(197,168,128,0.10); color: #C5A880; border-color: rgba(197,168,128,0.35); }
+        .tab-inactive { color: #6D8C87; border-color: transparent; }
+        .tab-inactive:hover { color: #ACD2CC; }
+
+        /* ===== 3-Theme palette/typography helper tokens ===== */
+        .pt-card { background: #153F38; }
+        .pt-ink1 { color: #EBF4F3; }
+        .pt-ink2 { color: #ACD2CC; }
+        .pt-ink3 { color: #6D8C87; }
+        .pt-chip { background: rgba(197,168,128,0.10); color: #C5A880; }
+        .pt-tab-active { background: rgba(197,168,128,0.12); color: #C5A880; border: 1px solid rgba(197,168,128,0.35); }
+        .pt-tab-inactive { color: #6D8C87; border: 1px solid transparent; }
+        .pt-tab-inactive:hover { color: #ACD2CC; }
+    </style>
+</head>
+<body class="min-h-screen pb-24">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="waqfa-mark-book" viewBox="0 0 2048 2043">
+    <path d="M1002.74 726.224C1164.81 713.83 1306.29 835.036 1318.92 997.086C1331.55 1159.13 1210.54 1300.79 1048.51 1313.65C886.151 1326.54 744.143 1205.23 731.491 1042.85C718.839 880.476 840.346 738.642 1002.74 726.224Z" fill="var(--wlogo-gold, #C5A880)"/>
+    <path d="M1870.5 1170.54C1896.29 1140.53 1922.21 1100.28 1943.39 1066.58C1951.36 1053.9 1961.03 1032.34 1968.49 1021.42C2053.4 1187.15 2069.77 1379.62 2014.04 1557.32C1958.82 1729.94 1825.76 1882.05 1664.8 1963.43C1493.84 2049.85 1307.93 2058.9 1127.08 2000.53C1105.27 1993.57 1083.82 1985.48 1062.85 1976.29C1057.59 1974.03 1027.95 1960.31 1024.34 1959.55C1020.97 1956.66 1006.31 1949.15 1001.77 1946.69C989.137 1939.95 976.64 1932.97 964.282 1925.75C935.28 1908.59 902.634 1885.21 875.916 1864.51C869.114 1858.43 858.22 1850.47 850.828 1844.17C844.917 1839.13 828.19 1824.56 822.557 1821.26C812.227 1810.7 688.83 1693.97 685.921 1692.6C686.154 1691.96 685.994 1691.24 685.988 1690.56L462.968 1466.34L398.351 1401.36C386.77 1389.49 366.877 1368.02 354.645 1357.49L353.556 1358.78C353.383 1358.41 353.211 1358.04 353.038 1357.68C352.308 1307.13 360.136 1255.57 377.41 1208.06C381.287 1197.4 383.685 1189.36 387.706 1183.26C391.02 1188.15 427.166 1224.58 434.073 1231.58L539.997 1338.68C622.682 1422.72 705.829 1506.3 789.435 1589.42C843.261 1642.54 898.004 1698.28 957.344 1745.16C1010.1 1787.4 1068.53 1822.02 1130.91 1848.02C1265.76 1904.7 1420.25 1910.15 1556.4 1854.46C1692.87 1798.7 1801.78 1691.27 1859.41 1555.57C1901.38 1452.66 1911.11 1339.42 1887.32 1230.85C1883.32 1212.53 1877.53 1187.71 1870.5 1170.54Z" fill="var(--wlogo-b, #6D8C87)"/>
+    <path d="M686.557 349.342C732.166 342.343 791.151 354.026 834.41 369.524C839.241 371.255 854.648 376.575 856.996 380.125C818.746 420.279 776.77 460.346 737.645 500.057L499.464 742.894C459.564 782.766 419.979 822.952 380.714 863.449C318.092 928.033 272.186 974.608 227.58 1053.76C175.775 1146.88 149.366 1251.99 151.001 1358.53C153.799 1505.15 215.992 1644.34 323.335 1744.24C427.143 1842.77 565.558 1896.47 708.65 1893.74C749.887 1892.61 790.881 1887.01 830.909 1877.03C843.045 1874.12 866.373 1866.19 875.916 1864.51C902.634 1885.21 935.28 1908.59 964.282 1925.75C976.64 1932.97 989.137 1939.95 1001.77 1946.69C1006.31 1949.15 1020.97 1956.66 1024.34 1959.55C995.943 1974.9 952.032 1991.33 921.608 2001.41C749.16 2058.53 555.167 2048.56 392.314 1966.58C224.163 1882.36 96.3632 1734.78 37.0393 1556.32C-21.1882 1379.43 -0.739014 1184.42 82.8247 1019.07C83.3015 1016.85 91.0338 1002.43 92.5844 999.467C117.586 951.671 147.243 910.938 180.213 868.634C193.924 854.52 208.479 834.538 224.287 818.081C231.271 811.631 239.399 802.297 246.225 795.224L291.629 748.54L330.309 708.528C338.911 699.798 349.58 690.045 357.333 680.85C407.062 627.985 460.025 577.707 511.171 526.178C569.617 467.294 626.859 406.941 686.557 349.342Z" fill="var(--wlogo-a, #F2F2F2)"/>
+    <path d="M1026.95 80.5191C1191.65 -3.69592 1383.11 -18.8271 1558.99 38.4722C1738.07 99.1537 1886.28 227.54 1971.87 396.141C2054.21 561.021 2067.15 751.991 2007.82 926.474C1996.67 958.897 1983.53 990.605 1968.49 1021.42C1961.03 1032.34 1951.36 1053.9 1943.39 1066.58C1922.21 1100.28 1896.29 1140.53 1870.5 1170.54C1859.19 1184.99 1836.98 1208.36 1828.14 1221.28C1816.37 1231.94 1803.79 1245.86 1792.69 1257.48C1776.72 1274.1 1760.65 1290.63 1744.48 1307.06C1733.83 1317.85 1723.1 1328.56 1712.28 1339.19C1709.69 1341.75 1698.11 1352.94 1696.46 1355.25C1668.8 1385.02 1637.86 1415.28 1609.14 1444.12L1480.82 1573.44L1400.96 1653.57C1393.25 1661.28 1370.46 1685.01 1363.03 1690.8C1353.37 1692.1 1342.77 1691.49 1333 1690.98C1284.42 1688.32 1236.82 1676.3 1192.81 1655.57C1308.58 1541.9 1423.39 1427.25 1537.23 1311.64L1643.16 1204.34C1709.39 1137.1 1772.23 1072.43 1819.19 989.81C1895.86 857.75 1916.43 700.474 1876.29 553.139C1836.36 411.565 1741.9 291.607 1613.65 219.579C1512.48 161.999 1395.55 138.272 1279.94 151.864C1242.1 156.499 1214.21 163.348 1177.9 173.495C1168.01 171.578 1144.35 151.433 1133.68 144.497C1112.54 130.759 1092.98 117.933 1071.22 105.156C1061.82 99.64 1033.67 85.8817 1026.95 80.5191Z" fill="var(--wlogo-a, #F2F2F2)"/>
+    <path d="M82.8247 1019.07C73.5131 1006.35 58.4132 965.213 52.2721 949.461C-64.9708 648.734 46.8047 312.059 310.865 129.782C478.02 12.0789 688.817 -25.3084 886.255 27.7288C913.551 35.1215 940.396 44.0897 966.655 54.5884C973.96 57.4561 1026.05 80.5075 1026.95 80.519C1033.67 85.8816 1061.82 99.6399 1071.22 105.156C1092.98 117.933 1112.54 130.759 1133.68 144.497C1144.35 151.433 1168.01 171.578 1177.9 173.495L1177.28 174.867C1180.18 178.239 1227.4 216.021 1229.51 216.875C1242.48 229.836 1364.44 347.598 1366.16 348.444C1366.87 351.815 1371.07 355.55 1373.64 358.166C1444.33 430.137 1515.56 501.958 1586.89 573.282L1658.15 644.784C1667.91 654.583 1684.89 672.695 1694.98 681.202C1696.68 735.773 1691.24 780.594 1672.81 832.338C1671.08 837.201 1665.4 853.503 1662.99 856.702L1346.33 535.397C1201.16 388.518 1056.5 221.351 848.976 166.701C802.627 154.318 754.865 148.011 706.89 147.941C560.039 148.767 419.507 207.783 316.096 312.052C211.782 415.827 153.431 557.093 154.104 704.233C154.317 755.494 163.698 819.843 180.213 868.634C147.243 910.938 117.586 951.671 92.5844 999.467C91.0338 1002.43 83.3015 1016.85 82.8247 1019.07Z" fill="var(--wlogo-b, #6D8C87)"/>
+    <path d="M413.664 1131.86C434.878 1096.94 477.14 1047.76 506.619 1019.82C528.012 1044.14 559.268 1074.13 582.666 1097.82L716.523 1233.22L911.448 1429.08C948.302 1465.74 987.792 1505.55 1025.66 1540.84C1050.8 1565.14 1108.61 1613.26 1140.27 1628.56C1149.36 1633.99 1184.06 1653.06 1192.81 1655.57C1236.82 1676.3 1284.42 1688.32 1333 1690.98C1342.77 1691.49 1353.37 1692.1 1363.03 1690.8C1366.85 1692.53 1381 1691.31 1385.68 1690.9C1475.7 1682.99 1558.88 1639.6 1616.88 1570.31C1659.19 1520.02 1686.08 1458.59 1694.33 1393.39C1695.58 1383.25 1697.32 1365.14 1696.46 1355.25C1698.11 1352.94 1709.69 1341.75 1712.28 1339.19C1723.1 1328.56 1733.83 1317.85 1744.48 1307.06C1760.65 1290.63 1776.72 1274.1 1792.69 1257.48C1803.79 1245.86 1816.37 1231.94 1828.14 1221.28C1837.06 1256.07 1842.32 1291.69 1843.83 1327.57C1849.9 1456.69 1803.97 1582.86 1716.29 1677.84C1546.58 1862.32 1287.17 1883.1 1075.62 1758.81C973.562 1698.85 896.444 1618.05 813.129 1535.45L529.235 1249.79L455.353 1174.13C442.065 1160.43 427.561 1144.72 413.664 1131.86Z" fill="var(--wlogo-b, #6D8C87)"/>
+    <path d="M908.876 406.787C934.993 420.726 1004.9 475.982 1024.66 497.339C1013.14 510.36 989.324 531.57 976.024 544.602C949.118 571.27 922.43 598.158 895.962 625.261L648.29 876.376C602.054 923.155 551.246 971.919 506.619 1019.82C477.14 1047.76 434.878 1096.94 413.664 1131.86C405.216 1146.81 394.351 1167.45 387.706 1183.26C383.685 1189.36 381.287 1197.4 377.41 1208.06C360.136 1255.57 352.308 1307.13 353.038 1357.68C353.211 1358.04 353.383 1358.41 353.556 1358.78C361.508 1460.52 396.048 1544.63 475.555 1612.19C521.397 1650.61 576.491 1676.36 635.364 1686.89C651.453 1689.76 669.546 1691.1 685.921 1692.6C688.83 1693.97 812.227 1810.7 822.557 1821.26C781.291 1832.23 738.74 1837.6 696.044 1837.25C566.267 1837.54 441.781 1785.84 350.395 1693.69C257.541 1601.1 205.774 1475.1 206.723 1343.97C207.019 1247.28 233.214 1152.42 282.587 1069.28C322.741 1000.92 383.537 940.048 438.86 883.488C481.531 839.435 524.516 795.689 567.814 752.253C680.584 636.195 794.275 521.036 908.876 406.787Z" fill="var(--wlogo-a, #F2F2F2)"/>
+    <path d="M224.287 818.081C192.489 702.813 213.385 563.561 272.091 460.034C337.806 342.951 447.516 256.925 576.894 221.032C715.161 183.121 851.865 206.777 974.357 278.397C1078.73 339.425 1161.59 426.084 1245.67 511.266L1403.53 671.491L1553.35 823.658C1578.97 849.668 1611.95 881.637 1636.03 908.41C1618.32 940.286 1570.94 996.353 1544.01 1020.64C1504.63 981.987 1463.68 938.689 1424.62 898.992L1175.01 646.544L1080.13 550.702C1063.67 534.251 1042.21 511.998 1024.66 497.339C1004.9 475.982 934.993 420.726 908.876 406.787C902.795 402.188 862.448 379.433 856.996 380.125C854.648 376.575 839.241 371.255 834.41 369.524C791.151 354.026 732.166 342.343 686.557 349.342C601.566 350.936 512.284 397.087 453.773 457.675C404.944 507.993 372.606 571.994 361.065 641.153C359.747 649.355 356.935 668.732 357.107 676.808C357.131 678.158 357.207 679.506 357.333 680.85C349.58 690.045 338.911 699.798 330.309 708.528L291.629 748.54L246.225 795.224C239.399 802.297 231.271 811.631 224.287 818.081Z" fill="var(--wlogo-b, #6D8C87)"/>
+    <path d="M1229.51 216.875C1245.74 212.05 1270.79 208.777 1287.81 206.882C1387.32 195.541 1487.92 214.77 1576.23 262.009C1830.04 399.398 1913.14 705.454 1774.58 955.323C1725.42 1043.97 1663.8 1104.18 1593.49 1175.93L1465.53 1306.04C1358.96 1415.4 1250.53 1522.92 1140.27 1628.56C1108.61 1613.26 1050.8 1565.14 1025.66 1540.84C1034.84 1531.14 1046.72 1520.14 1056.37 1510.62C1076.07 1491 1095.88 1471.49 1115.8 1452.09C1151.47 1417.01 1186.94 1381.73 1222.22 1346.24L1544.01 1020.64C1570.94 996.353 1618.32 940.286 1636.03 908.41C1644.06 895.348 1657.28 870.75 1662.99 856.702C1665.4 853.503 1671.08 837.201 1672.81 832.338C1691.24 780.594 1696.68 735.773 1694.98 681.202C1686.48 603.963 1669.74 547.02 1620.85 484.517C1570.13 419.22 1498.14 373.752 1417.39 356.013C1399.06 351.954 1384.63 350.697 1366.16 348.444C1364.44 347.598 1242.48 229.836 1229.51 216.875Z" fill="var(--wlogo-a, #F2F2F2)"/>
+  </symbol>
+</svg>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 bg-system-card border border-system-accent/40 text-system-ink1 px-5 py-3 rounded-2xl shadow-2xl opacity-0 translate-y-4 transition-all duration-300 flex items-center gap-3 z-50 pointer-events-none">
+    <span class="w-2 h-2 rounded-full bg-system-accent pulse"></span>
+    <span id="toast-msg" class="font-bold text-sm mono">Copied!</span>
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 border-b border-system-border bg-system-base/95 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-4">
+            <!-- Logo mark -->
+            <svg class="w-10 h-10 logo-on-dark" aria-hidden="true"><use href="#waqfa-mark-book"></use></svg>
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="font-extrabold text-xl tracking-wider" style="color:#C5A880">Waqfa</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-lg font-bold amiri" style="background:rgba(197,168,128,0.08);color:#C5A880;border:1px solid rgba(197,168,128,0.25)">وقفة</span>
+                    <span class="text-[10px] bg-system-panel border border-system-border text-system-ink3 px-2 py-0.5 rounded-lg font-bold">Version Approved</span>
+                </div>
+                <p class="text-[11px] text-system-ink3 tracking-widest uppercase">Dhikr &amp; Wird Companion — Brand Identity</p>
+            </div>
+        </div>
+        <nav class="flex flex-wrap items-center gap-2">
+            <button onclick="scrollTo('identity')"  class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Identity</button>
+            <button onclick="scrollTo('palette')"   class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Palette</button>
+            <button onclick="scrollTo('typography')" class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Type</button>
+            <button onclick="scrollTo('components')" class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Components</button>
+            <button onclick="scrollTo('mockups')"   class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Mockups</button>
+            <button onclick="scrollTo('code')"      class="px-3 py-1.5 text-xs text-system-ink2 hover:text-system-ink1 hover:bg-system-panel rounded-xl transition">Code</button>
+            <button onclick="exportWord()" class="px-4 py-1.5 text-xs bg-system-accent text-system-base font-bold rounded-xl hover:bg-system-accent2 transition shadow-lg flex items-center gap-1.5">
+                📥 Export Word
+            </button>
+        </nav>
+    </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 mt-12 space-y-20">
+
+    <!-- SKILL: HERO — set project name, Arabic wordmark, purpose paragraph, status chips -->
+    <!-- ① HERO -->
+    <section class="relative rounded-3xl overflow-hidden border border-system-accent/20 gold-glow">
+        <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-system-panel via-system-base to-system-base pointer-events-none"></div>
+        <!-- Radial accent -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-system-accent/8 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
+
+        <div class="relative z-10 p-10 sm:p-16">
+            <span class="text-[11px] text-system-accent uppercase tracking-widest font-extrabold px-3 py-1.5 bg-system-accent/10 border border-system-accent/25 rounded-lg inline-block mb-6 mono">Brand Identity System</span>
+
+            <div class="flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16">
+                <div class="space-y-4 flex-1">
+                    <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight">
+                        <span class="text-system-ink1">Waqfa</span><br>
+                        <span class="text-3xl sm:text-4xl font-bold amiri" style="color:#C5A880">وقفة</span>
+                    </h1>
+                    <p class="text-system-ink2 text-sm sm:text-base leading-relaxed max-w-xl">
+                        Waqfa (وقفة) is an Arabic-first Islamic dhikr and wird companion — a quiet digital sanctuary for structured daily remembrance: morning, evening, sleep and waking adhkar, with Ruqyah. Every religious text passes a review committee before it enters the app, and every colour token below is WCAG-audited at source.
+                    </p>
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <span class="inline-flex items-center gap-2 text-xs bg-system-accent/10 border border-system-accent/30 px-3 py-1.5 rounded-lg text-system-accent font-bold amiri">
+                            هذا التطبيق وقفٌ لله تعالى
+                        </span>
+                        <span class="inline-flex items-center gap-2 text-xs bg-system-panel border border-system-border px-3 py-1.5 rounded-lg text-system-ink2 mono">
+                            <span class="w-1.5 h-1.5 rounded-full pulse" style="background:#4ADE80"></span> WCAG AAA · Self-auditing tokens
+                        </span>
+                        <span class="inline-flex items-center gap-2 text-xs bg-system-panel border border-system-border px-3 py-1.5 rounded-lg text-system-ink2 mono">
+                            <span class="w-1.5 h-1.5 rounded-full bg-system-accent pulse"></span> Arabic-first · RTL by design
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Hero visual: mini dashboard preview -->
+                <div class="float-anim w-full lg:w-80 shrink-0">
+                    <div class="bg-system-card border border-system-border rounded-2xl p-4 space-y-3 shadow-2xl">
+                        <div class="flex items-center justify-between border-b border-system-border pb-3">
+                            <span class="text-[10px] mono text-system-ink3 uppercase tracking-wider">Today's Wird</span>
+                            <span class="text-[10px] font-bold mono flex items-center gap-1" style="color:#4ADE80"><span class="w-1.5 h-1.5 rounded-full pulse inline-block" style="background:#4ADE80"></span>3 / 4 Done</span>
+                        </div>
+                        <!-- Mini stat cards -->
+                        <div class="grid grid-cols-2 gap-2">
+                            <div class="bg-system-panel rounded-xl p-3 border border-system-border">
+                                <p class="text-[9px] text-system-ink3 mono uppercase">Streak</p>
+                                <p class="text-xl font-black text-system-accent mono">12d</p>
+                                <p class="text-[9px] text-system-ink3">consecutive</p>
+                            </div>
+                            <div class="bg-system-panel rounded-xl p-3 border border-system-border">
+                                <p class="text-[9px] text-system-ink3 mono uppercase">This Month</p>
+                                <p class="text-xl font-black mono" style="color:#4ADE80">94%</p>
+                                <p class="text-[9px] text-system-ink3">completion</p>
+                            </div>
+                        </div>
+                        <!-- Mini sparkline area -->
+                        <div class="bg-system-panel rounded-xl p-3 border border-system-border">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="text-[9px] mono text-system-ink3 uppercase">Weekly Rhythm</span>
+                                <span class="text-[9px] text-system-accent mono">steady</span>
+                            </div>
+                            <svg class="w-full h-8" viewBox="0 0 120 24" preserveAspectRatio="none">
+                                <path d="M0,20 Q10,14 20,16 T40,8 T60,18 T80,4 T100,10 T120,6" fill="none" stroke="#C5A880" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M0,20 Q10,14 20,16 T40,8 T60,18 T80,4 T100,10 T120,6 L120,24 L0,24Z" fill="url(#sg)" opacity="0.15"/>
+                                <defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C5A880"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+                            </svg>
+                        </div>
+                        <!-- Status row -->
+                        <div class="space-y-1.5">
+                            <div class="flex justify-between items-center text-[10px] mono px-2 py-1.5 rounded-lg" style="background:rgba(46,97,67,0.08);border:1px solid rgba(46,97,67,0.2);color:#4ADE80">
+                                <span class="arabic">أذكار الصباح</span><span class="font-bold flex items-center gap-1"><span class="w-1 h-1 rounded-full pulse inline-block" style="background:#4ADE80"></span>DONE</span>
+                            </div>
+                            <div class="flex justify-between items-center text-[10px] mono px-2 py-1.5 rounded-lg" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2);color:#F59E0B">
+                                <span class="arabic">أذكار المساء</span><span class="font-bold flex items-center gap-1"><span class="w-1 h-1 rounded-full pulse inline-block" style="background:#F59E0B"></span>OPEN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ② BRAND IDENTITY PILLARS -->
+    <section id="identity" class="scroll-mt-24 space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">01</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">Brand Philosophy & Pillars</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4 card-hover">
+                <div class="w-12 h-12 bg-system-accent/10 border border-system-accent/20 rounded-2xl flex items-center justify-center text-2xl">🕌</div>
+                <h3 class="text-lg font-bold text-system-ink1">Waqf Dedication <span class="amiri text-system-accent">· وقف</span></h3>
+                <p class="text-system-ink2 text-sm leading-relaxed">Waqfa exists as an endowment — هذا التطبيق وقفٌ لله تعالى. No monetisation pressure shapes the interface: no ads, no dark patterns, no engagement traps. The design serves the worshipper, nothing else.</p>
+            </div>
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4 card-hover">
+                <div class="w-12 h-12 bg-system-accent/10 border border-system-accent/20 rounded-2xl flex items-center justify-center text-2xl">🕊</div>
+                <h3 class="text-lg font-bold text-system-ink1">Sakina <span class="amiri text-system-accent">· سكينة</span></h3>
+                <p class="text-system-ink2 text-sm leading-relaxed">Clarity before action. Deep emerald and warm ivory carry calm; gold marks only what matters — the logo centre, the primary action, the moment of focus. Low visual noise is a spiritual requirement, not a style choice.</p>
+            </div>
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4 card-hover">
+                <div class="w-12 h-12 bg-system-accent/10 border border-system-accent/20 rounded-2xl flex items-center justify-center text-2xl">⚖</div>
+                <h3 class="text-lg font-bold text-system-ink1">Amanah <span class="amiri text-system-accent">· أمانة</span></h3>
+                <p class="text-system-ink2 text-sm leading-relaxed">Trusteeship in both directions: every religious text passes the review committee (اللجنة) before entering the app, and every colour pair is contrast-measured at source — the palette documents its own WCAG ratios and never claims more than it delivers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ COLOR PALETTE -->
+    <section id="palette" class="scroll-mt-24 space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">02</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">Color System — 3 Themes</h2>
+        <!-- SKILL: replace tabs+theme blocks below using scripts/build_cards.py build_palette_section() -->
+        </div>
+        <p class="text-system-ink2 text-sm max-w-2xl">Waqfa ships with three complete themes: the fixed portfolio flagship Sovereign, plus Ivory and Emerald — both drawn token-for-token from the WCAG-audited v2.0 colour system. Click any swatch to copy its hex.</p>
+
+        <div class="inline-flex items-center gap-2 bg-system-card border border-system-border rounded-2xl p-1.5">
+                <button data-pt-tab="sovereign" onclick="switchPalette('sovereign')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-active">Sovereign</button>
+                <button data-pt-tab="ivory" onclick="switchPalette('ivory')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-inactive">Ivory</button>
+                <button data-pt-tab="emerald" onclick="switchPalette('emerald')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-inactive">Emerald</button>
+        </div>
+
+        <div class="pt-theme" data-pt-theme="sovereign">
+            <div class="flex items-center gap-2 pt-2 flex-wrap">
+                <span class="text-[10px] mono font-bold" style="color:#FFC107">01</span>
+                <h3 class="text-sm font-bold pt-ink1">Sovereign <span class="pt-ink3 font-normal">/ السيادة</span></h3>
+                <span class="text-[10px] pt-ink3">— 10 design tokens</span>
+            </div>
+            <p class="text-xs pt-ink2 max-w-2xl pt-1 pb-2">Flagship onyx & gold — deep functional black with golden-yellow marking every active, focused, primary state. Fonts: Cairo (AR) · Ubuntu (EN).</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#1A1A1A')">
+                <div class="h-28 relative" style="background:#1A1A1A">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">base</h3>
+                    <p class="text-[10px] pt-ink3">Page background</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#1A1A1A</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#242424')">
+                <div class="h-28 relative" style="background:#242424">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">panel</h3>
+                    <p class="text-[10px] pt-ink3">Sidebar & headers</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#242424</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#2E2E2E')">
+                <div class="h-28 relative" style="background:#2E2E2E">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">card</h3>
+                    <p class="text-[10px] pt-ink3">Component surfaces</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#2E2E2E</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#4D4D4D')">
+                <div class="h-28 relative" style="background:#4D4D4D">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">border</h3>
+                    <p class="text-[10px] pt-ink3">Dividers & borders</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#4D4D4D</span>
+                </div>
+            </div>
+            <div class="pt-card border-2 rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:#FFC107" onclick="copyColor('#FFC107')">
+                <div class="h-28 relative" style="background:#FFC107">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent ★</h3>
+                    <p class="text-[10px] pt-ink3">Primary accent — actions, focus</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#FFC107</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#FFD04D')">
+                <div class="h-28 relative" style="background:#FFD04D">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent-hi</h3>
+                    <p class="text-[10px] pt-ink3">Hover / bright accent</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#FFD04D</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#CC9900')">
+                <div class="h-28 relative" style="background:#CC9900">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent-lo</h3>
+                    <p class="text-[10px] pt-ink3">Pressed / deep accent</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#CC9900</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#F2F2F2')">
+                <div class="h-28 relative" style="background:#F2F2F2">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink1</h3>
+                    <p class="text-[10px] pt-ink3">Primary text</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#F2F2F2</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#999999')">
+                <div class="h-28 relative" style="background:#999999">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink2</h3>
+                    <p class="text-[10px] pt-ink3">Secondary / body text</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#999999</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#666666')">
+                <div class="h-28 relative" style="background:#666666">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink3</h3>
+                    <p class="text-[10px] pt-ink3">Muted / tertiary text</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#666666</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="pt-theme hidden" data-pt-theme="ivory">
+            <div class="flex items-center gap-2 pt-2 flex-wrap">
+                <span class="text-[10px] mono font-bold" style="color:#0F3E36">02</span>
+                <h3 class="text-sm font-bold pt-ink1">Ivory <span class="pt-ink3 font-normal">/ عاج</span></h3>
+                <span class="text-[10px] pt-ink3">— 10 design tokens</span>
+            </div>
+            <p class="text-xs pt-ink2 max-w-2xl pt-1 pb-2">Waqfa's light theme — warm ivory surfaces with deep emerald as the primary accent and legible gold ink. Every text pair audits at AAA (7:1+); boundaries hold the 3:1 non-text bar. Fonts: Cairo (UI) · Amiri (classical).</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#F7F3EC')">
+                <div class="h-28 relative" style="background:#F7F3EC">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">base</h3>
+                    <p class="text-[10px] pt-ink3">Page background (ivory)</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#F7F3EC</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#FFFFFF')">
+                <div class="h-28 relative" style="background:#FFFFFF">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">surface</h3>
+                    <p class="text-[10px] pt-ink3">Raised cards & panels</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#FFFFFF</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#F0ECE5')">
+                <div class="h-28 relative" style="background:#F0ECE5">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">surface-2</h3>
+                    <p class="text-[10px] pt-ink3">Subtle secondary surface</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#F0ECE5</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#948A79')">
+                <div class="h-28 relative" style="background:#948A79">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">border</h3>
+                    <p class="text-[10px] pt-ink3">Control boundaries — 3.08:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#948A79</span>
+                </div>
+            </div>
+            <div class="pt-card border-2 rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:#0F3E36" onclick="copyColor('#0F3E36')">
+                <div class="h-28 relative" style="background:#0F3E36">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent ★</h3>
+                    <p class="text-[10px] pt-ink3">Waqfa deep green — primary actions</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#0F3E36</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#19675A')">
+                <div class="h-28 relative" style="background:#19675A">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent-hi</h3>
+                    <p class="text-[10px] pt-ink3">Hover / raised accent</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#19675A</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#C5A880')">
+                <div class="h-28 relative" style="background:#C5A880">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">gold</h3>
+                    <p class="text-[10px] pt-ink3">Identity gold — logo centre, callout actions</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#C5A880</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#5F4720')">
+                <div class="h-28 relative" style="background:#5F4720">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">gold-ink</h3>
+                    <p class="text-[10px] pt-ink3">Legible gold text — 7.88:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#5F4720</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#352E23')">
+                <div class="h-28 relative" style="background:#352E23">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink1</h3>
+                    <p class="text-[10px] pt-ink3">Primary text — 12.12:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#352E23</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#5C513D')">
+                <div class="h-28 relative" style="background:#5C513D">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink2</h3>
+                    <p class="text-[10px] pt-ink3">Secondary text — 7.03:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#5C513D</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="pt-theme hidden" data-pt-theme="emerald">
+            <div class="flex items-center gap-2 pt-2 flex-wrap">
+                <span class="text-[10px] mono font-bold" style="color:#C5A880">03</span>
+                <h3 class="text-sm font-bold pt-ink1">Emerald <span class="pt-ink3 font-normal">/ زمرد</span></h3>
+                <span class="text-[10px] pt-ink3">— 10 design tokens</span>
+            </div>
+            <p class="text-xs pt-ink2 max-w-2xl pt-1 pb-2">Waqfa's dark theme — deep emerald night surfaces, identity gold as the star accent with teal for interactive states. Text pairs audit 7:1+ throughout. Fonts: Cairo (UI) · Amiri (classical).</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#08211D')">
+                <div class="h-28 relative" style="background:#08211D">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">base</h3>
+                    <p class="text-[10px] pt-ink3">Page background (emerald night)</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#08211D</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#0F3E36')">
+                <div class="h-28 relative" style="background:#0F3E36">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">panel</h3>
+                    <p class="text-[10px] pt-ink3">Sidebar & header surfaces</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#0F3E36</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#153F38')">
+                <div class="h-28 relative" style="background:#153F38">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">card</h3>
+                    <p class="text-[10px] pt-ink3">Component surfaces</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#153F38</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#5D9187')">
+                <div class="h-28 relative" style="background:#5D9187">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">border</h3>
+                    <p class="text-[10px] pt-ink3">Control boundaries — 3.33:1 on panel</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#5D9187</span>
+                </div>
+            </div>
+            <div class="pt-card border-2 rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:#C5A880" onclick="copyColor('#C5A880')">
+                <div class="h-28 relative" style="background:#C5A880">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">accent ★</h3>
+                    <p class="text-[10px] pt-ink3">Identity gold — 7.46:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#C5A880</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#59C0AF')">
+                <div class="h-28 relative" style="background:#59C0AF">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">brand</h3>
+                    <p class="text-[10px] pt-ink3">Interactive teal — buttons, links (7.69:1)</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#59C0AF</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#241F14')">
+                <div class="h-28 relative" style="background:#241F14">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">action-ink</h3>
+                    <p class="text-[10px] pt-ink3">Text on gold actions — 7.25:1</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#241F14</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#6D8C87')">
+                <div class="h-28 relative" style="background:#6D8C87">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#FFFFFF;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">sage</h3>
+                    <p class="text-[10px] pt-ink3">Logo strand / tertiary marks</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#6D8C87</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#EBF4F3')">
+                <div class="h-28 relative" style="background:#EBF4F3">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink1</h3>
+                    <p class="text-[10px] pt-ink3">Primary text — 15.07:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#EBF4F3</span>
+                </div>
+            </div>
+            <div class="pt-card border rounded-3xl overflow-hidden card-hover group cursor-pointer" style="border-color:var(--pt-border)" onclick="copyColor('#ACD2CC')">
+                <div class="h-28 relative" style="background:#ACD2CC">
+                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-xs font-semibold" style="color:#1A1A1A;background:rgba(0,0,0,0.05)">Copy</div>
+                </div>
+                <div class="p-4 space-y-1">
+                    <h3 class="text-xs font-bold pt-ink1">ink2</h3>
+                    <p class="text-[10px] pt-ink3">Secondary text — 10.31:1 on base</p>
+                    <span class="mono text-[10px] pt-chip px-2 py-0.5 rounded-lg font-bold inline-block mt-1">#ACD2CC</span>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Status colors (shared across all themes) -->
+        <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+            <h3 class="text-sm font-bold text-system-ink1 flex items-center gap-2">
+                <span class="w-1.5 h-4 bg-system-accent rounded-full"></span>
+                Semantic Status Colors — shared across all three themes, never tied to Tailwind classes
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="rounded-2xl p-4 space-y-2 cursor-pointer card-hover" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.25)" onclick="copyColor('#4ADE80')">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full pulse" style="background:#4ADE80"></span>
+                        <span class="text-xs font-bold mono" style="color:#4ADE80">UP / Operational</span>
+                    </div>
+                    <p class="text-[11px] text-system-ink3">Service responding normally within expected latency.</p>
+                    <span class="mono text-[10px] font-bold" style="color:#4ADE80">#4ADE80</span>
+                </div>
+                <div class="rounded-2xl p-4 space-y-2 cursor-pointer card-hover" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25)" onclick="copyColor('#F59E0B')">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full pulse" style="background:#F59E0B"></span>
+                        <span class="text-xs font-bold mono" style="color:#F59E0B">SLOW / Degraded</span>
+                    </div>
+                    <p class="text-[11px] text-system-ink3">Service responding but above acceptable latency threshold.</p>
+                    <span class="mono text-[10px] font-bold" style="color:#F59E0B">#F59E0B</span>
+                </div>
+                <div class="rounded-2xl p-4 space-y-2 cursor-pointer card-hover" style="background:rgba(244,63,94,0.08);border:1px solid rgba(244,63,94,0.25)" onclick="copyColor('#F43F5E')">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full pulse" style="background:#F43F5E"></span>
+                        <span class="text-xs font-bold mono" style="color:#F43F5E">DOWN / Unreachable</span>
+                    </div>
+                    <p class="text-[11px] text-system-ink3">No response from service. Immediate attention required.</p>
+                    <span class="mono text-[10px] font-bold" style="color:#F43F5E">#F43F5E</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ TYPOGRAPHY -->
+    <section id="typography" class="scroll-mt-24 space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">03</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">Typography — 3 Themes, 3 Type Sets</h2>
+        <!-- SKILL: replace tabs+typo blocks below using scripts/build_cards.py build_typo_section() -->
+        </div>
+        <p class="text-system-ink2 text-sm max-w-2xl">Sovereign keeps its fixed Ubuntu + Cairo + Ubuntu Mono set. Both Waqfa themes speak one typographic voice — Cairo for Arabic and Latin UI, Amiri for the wordmark and classical display — per the brand's standing typography decision.</p>
+
+        <div class="inline-flex items-center gap-2 bg-system-card border border-system-border rounded-2xl p-1.5">
+                <button data-pt-typotab="sovereign" onclick="switchTypo('sovereign')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-active">Sovereign</button>
+                <button data-pt-typotab="ivory" onclick="switchTypo('ivory')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-inactive">Ivory</button>
+                <button data-pt-typotab="emerald" onclick="switchTypo('emerald')" class="px-4 py-2 rounded-xl text-xs font-bold transition pt-tab-inactive">Emerald</button>
+        </div>
+
+        <div class="pt-typo" data-pt-typo="sovereign">
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest font-extrabold mono" style="color:#FFC107">Sovereign / السيادة — Typeface Set</span>
+                </div>
+                <div class="space-y-4 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-black text-system-ink1" style="font-family:'Ubuntu', sans-serif">Ubuntu</span>
+                        <span class="text-xs font-bold mono" style="color:#FFC107">UI / LTR</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Weights: 300 · 400 · 500 · 700. Navigation, titles, buttons, body.</p>
+                    <div class="text-lg text-system-ink1" style="font-family:'Ubuntu', sans-serif">The quick brown fox — 0123456789</div>
+                </div>
+                <div class="space-y-3 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold text-system-ink1" style="font-family:'Cairo', sans-serif">Cairo</span>
+                        <span class="text-xs font-bold mono" style="color:#FFC107">RTL / Arabic</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Cairo is the Sovereign Arabic face — geometric, high-clarity, pairs tightly with Ubuntu.</p>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-right leading-[1.9] text-system-ink1 text-base" style="font-family:'Cairo', sans-serif;direction:rtl">مرحباً، محمد — لوحة التحكم جاهزة. كل الأنظمة تعمل بكفاءة.</div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold" style="font-family:'Ubuntu Mono', monospace;color:#FFC107">Ubuntu Mono</span>
+                        <span class="text-xs font-bold mono" style="color:#FFC107">Data / Terminal</span>
+                    </div>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-sm space-y-1" style="font-family:'Ubuntu Mono', monospace">
+                        <div class="text-system-ink2">DNS01-Hub <span style="color:#FFC107">192.168.1.2</span> <span style="color:#4ADE80">↑ 99.9%</span></div>
+                        <div class="text-system-ink2">Observe-Hub <span style="color:#FFC107">192.168.1.211</span> <span style="color:#4ADE80">↑ 98.4%</span></div>
+                        <div class="text-system-ink2">AI-Hub <span style="color:#FFC107">192.168.1.215</span> <span style="color:#F59E0B">~ 94.1%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-typo hidden" data-pt-typo="ivory">
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest font-extrabold mono" style="color:#0F3E36">Ivory / عاج — Typeface Set</span>
+                </div>
+                <div class="space-y-4 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-black text-system-ink1" style="font-family:'Cairo', sans-serif">Cairo</span>
+                        <span class="text-xs font-bold mono" style="color:#0F3E36">UI / AR + EN</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Weights: 400 · 600 · 700 · 800. Navigation, titles, buttons, body.</p>
+                    <div class="text-lg text-system-ink1" style="font-family:'Cairo', sans-serif">The quick brown fox — 0123456789</div>
+                </div>
+                <div class="space-y-3 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold text-system-ink1" style="font-family:'Amiri', serif">Amiri</span>
+                        <span class="text-xs font-bold mono" style="color:#0F3E36">Classical / Display</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Amiri carries the wordmark and classical or contemplative display moments; everyday Arabic UI stays in Cairo. Generous 1.9 line-height.</p>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-right leading-[1.9] text-system-ink1 text-base" style="font-family:'Amiri', serif;direction:rtl">مرحباً، محمد — لوحة التحكم جاهزة. كل الأنظمة تعمل بكفاءة.</div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold" style="font-family:'Ubuntu Mono', monospace;color:#0F3E36">Ubuntu Mono</span>
+                        <span class="text-xs font-bold mono" style="color:#0F3E36">Data / Times</span>
+                    </div>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-sm space-y-1" style="font-family:'Ubuntu Mono', monospace">
+                        <div class="text-system-ink2">wird.morning <span style="color:#0F3E36">05:40–07:30</span> <span style="color:#4ADE80">✓ 100%</span></div>
+                        <div class="text-system-ink2">wird.evening <span style="color:#0F3E36">16:45–19:20</span> <span style="color:#F59E0B">~ open</span></div>
+                        <div class="text-system-ink2">wird.sleep <span style="color:#0F3E36">21:30–00:00</span> <span style="color:#4ADE80">· queued</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-typo hidden" data-pt-typo="emerald">
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-6">
+                <div class="flex items-center gap-2">
+                    <span class="text-[10px] uppercase tracking-widest font-extrabold mono" style="color:#C5A880">Emerald / زمرد — Typeface Set</span>
+                </div>
+                <div class="space-y-4 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-black text-system-ink1" style="font-family:'Cairo', sans-serif">Cairo</span>
+                        <span class="text-xs font-bold mono" style="color:#C5A880">UI / AR + EN</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Weights: 400 · 600 · 700 · 800. Navigation, titles, buttons, body.</p>
+                    <div class="text-lg text-system-ink1" style="font-family:'Cairo', sans-serif">The quick brown fox — 0123456789</div>
+                </div>
+                <div class="space-y-3 border-b border-system-border pb-5">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold text-system-ink1" style="font-family:'Amiri', serif">Amiri</span>
+                        <span class="text-xs font-bold mono" style="color:#C5A880">Classical / Display</span>
+                    </div>
+                    <p class="text-xs text-system-ink2">Same pairing as Ivory — one typographic voice across both Waqfa themes. Amiri for the wordmark and classical display, Cairo for everything interactive.</p>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-right leading-[1.9] text-system-ink1 text-base" style="font-family:'Amiri', serif;direction:rtl">مرحباً، محمد — لوحة التحكم جاهزة. كل الأنظمة تعمل بكفاءة.</div>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-baseline justify-between flex-wrap gap-2">
+                        <span class="text-2xl font-bold" style="font-family:'Ubuntu Mono', monospace;color:#C5A880">Ubuntu Mono</span>
+                        <span class="text-xs font-bold mono" style="color:#C5A880">Data / Times</span>
+                    </div>
+                    <div class="bg-system-panel rounded-2xl p-4 border border-system-border text-sm space-y-1" style="font-family:'Ubuntu Mono', monospace">
+                        <div class="text-system-ink2">wird.morning <span style="color:#C5A880">05:40–07:30</span> <span style="color:#4ADE80">✓ 100%</span></div>
+                        <div class="text-system-ink2">wird.evening <span style="color:#C5A880">16:45–19:20</span> <span style="color:#F59E0B">~ open</span></div>
+                        <div class="text-system-ink2">wird.sleep <span style="color:#C5A880">21:30–00:00</span> <span style="color:#4ADE80">· queued</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑤ LOGO -->
+    <section class="scroll-mt-24 space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">04</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">Logo & Mark</h2>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Construction + surface variants -->
+            <div class="lg:col-span-7 bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Two Interlocking Rings — Palette Trio Rule</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="h-56 rounded-2xl flex flex-col items-center justify-center gap-3 logo-on-light" style="background:#F7F3EC;border:1px solid #948A79">
+                        <svg class="w-24 h-24" role="img" aria-label="Waqfa mark on light surface"><use href="#waqfa-mark-book"></use></svg>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold amiri" style="color:#5F4720">وقفة</div>
+                            <div class="text-[10px] mono tracking-[0.2em] uppercase mt-1" style="color:#5C513D">Light · #0F1140 + #0F3E36</div>
+                        </div>
+                    </div>
+                    <div class="h-56 rounded-2xl flex flex-col items-center justify-center gap-3 logo-on-dark" style="background:#08211D;border:1px solid #5D9187">
+                        <svg class="w-24 h-24" role="img" aria-label="Waqfa mark on dark surface"><use href="#waqfa-mark-book"></use></svg>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold amiri" style="color:#C5A880">وقفة</div>
+                            <div class="text-[10px] mono tracking-[0.2em] uppercase mt-1" style="color:#ACD2CC">Dark · #F2F2F2 + #6D8C87</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-system-ink2 border-t border-system-border pt-4">
+                    <div><strong class="text-system-ink1 block mb-1">Palette Trio Rule</strong>Every strand comes from the product palette; the gold centre #C5A880 never changes between variants.</div>
+                    <div><strong class="text-system-ink1 block mb-1">Clear Space</strong>Minimum 1× the mark width on all sides before placing other elements.</div>
+                    <div><strong class="text-system-ink1 block mb-1">Minimum Size</strong>24px digital. Below this, use the gold centre dot alone.</div>
+                </div>
+            </div>
+            <!-- Violations -->
+            <div class="lg:col-span-5 bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Prohibited Uses</span>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="rounded-2xl p-3 text-center space-y-2" style="background:rgba(244,63,94,0.05);border:1px solid rgba(244,63,94,0.2)">
+                        <div class="h-16 rounded-xl flex items-center justify-center logo-on-dark" style="background:#08211D">
+                            <svg class="w-10 h-10" aria-hidden="true" style="filter:drop-shadow(0 0 8px #C5A880)"><use href="#waqfa-mark-book"></use></svg>
+                        </div>
+                        <span class="text-[10px] font-bold block" style="color:#F43F5E">🚨 No Glow Effects</span>
+                    </div>
+                    <div class="rounded-2xl p-3 text-center space-y-2" style="background:rgba(244,63,94,0.05);border:1px solid rgba(244,63,94,0.2)">
+                        <div class="h-16 rounded-xl flex items-center justify-center logo-on-light" style="background:#0F3E36">
+                            <svg class="w-10 h-10" aria-hidden="true"><use href="#waqfa-mark-book"></use></svg>
+                        </div>
+                        <span class="text-[10px] font-bold block" style="color:#F43F5E">🚨 No Light Trio on Dark — 1.0:1</span>
+                    </div>
+                    <div class="rounded-2xl p-3 text-center space-y-2" style="background:rgba(244,63,94,0.05);border:1px solid rgba(244,63,94,0.2)">
+                        <div class="h-16 rounded-xl flex items-center justify-center logo-on-light" style="background:#F7F3EC">
+                            <svg class="w-10 h-10 opacity-60" aria-hidden="true" style="transform:rotate(20deg)"><use href="#waqfa-mark-book"></use></svg>
+                        </div>
+                        <span class="text-[10px] font-bold block" style="color:#F43F5E">🚨 No Rotation</span>
+                    </div>
+                    <div class="rounded-2xl p-3 text-center space-y-2" style="background:rgba(244,63,94,0.05);border:1px solid rgba(244,63,94,0.2)">
+                        <div class="h-16 rounded-xl flex items-center justify-center" style="background:#F7F3EC;--wlogo-a:#7C3AED;--wlogo-b:#DB2777;--wlogo-gold:#FFC107">
+                            <svg class="w-10 h-10 opacity-70" aria-hidden="true"><use href="#waqfa-mark-book"></use></svg>
+                        </div>
+                        <span class="text-[10px] font-bold block" style="color:#F43F5E">🚨 No Foreign Palette</span>
+                    </div>
+                </div>
+                <p class="text-[10px] text-system-ink3 italic">The "1.0:1" tile is measured, not rhetorical: the light trio's deep green is invisible on Waqfa's own dark surface.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑥ UI COMPONENTS SHOWCASE -->
+    <section id="components" class="scroll-mt-24 space-y-8">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">05</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">UI Component Specimens</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Buttons -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Buttons</span>
+                <div class="space-y-3">
+                    <button class="w-full py-2.5 rounded-xl font-bold text-sm bg-system-accent text-system-base hover:bg-system-accent2 transition shadow-lg">Begin Session</button>
+                    <button class="w-full py-2.5 rounded-xl font-bold text-sm border text-system-ink1 hover:border-system-accent hover:text-system-accent transition" style="border-color:#5D9187;background:transparent">View Progress</button>
+                    <button class="w-full py-2.5 rounded-xl font-bold text-sm bg-system-panel text-system-ink3 cursor-not-allowed opacity-50" disabled>Disabled State</button>
+                </div>
+            </div>
+
+            <!-- Form inputs -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Form Inputs</span>
+                <div class="space-y-3">
+                    <div class="space-y-1.5">
+                        <label class="block text-[10px] mono text-system-ink3 uppercase">WIRD TIME START</label>
+                        <input type="text" value="05:40" class="w-full bg-system-panel border rounded-xl px-3 py-2 text-sm text-system-ink1 mono focus:outline-none focus:ring-1 focus:ring-system-accent focus:border-system-accent transition" style="border-color:#5D9187">
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="block text-[10px] mono text-system-ink3 uppercase">DAILY RESET</label>
+                        <input type="text" value="02:00" class="w-full bg-system-panel border rounded-xl px-3 py-2 text-sm text-system-accent mono focus:outline-none focus:ring-1 focus:ring-system-accent transition" style="border-color:rgba(197,168,128,0.4)">
+                        <p class="text-[10px] text-system-ink3">Focus state — gold ring + border highlight (3:1 boundary)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badges -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Badges & Chips</span>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold mono uppercase" style="color:#C5A880;border:1px solid rgba(197,168,128,0.3);background:rgba(197,168,128,0.1)">MORNING</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold mono uppercase" style="color:#4ADE80;border:1px solid rgba(74,222,128,0.3);background:rgba(74,222,128,0.1)">COMPLETED</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold mono uppercase" style="color:#F59E0B;border:1px solid rgba(245,158,11,0.3);background:rgba(245,158,11,0.1)">IN PROGRESS</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold mono uppercase" style="color:#F43F5E;border:1px solid rgba(244,63,94,0.3);background:rgba(244,63,94,0.1)">MISSED</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold mono uppercase" style="color:#ACD2CC;border:1px solid #5D9187;background:#153F38">AD-HOC</span>
+                </div>
+            </div>
+
+            <!-- Service card -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4 card-hover">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Wird Section Card</span>
+                <div class="bg-system-panel border border-system-border rounded-2xl p-4 space-y-3 hover:border-system-accent/30 transition">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg bg-system-accent/10 border border-system-accent/20 flex items-center justify-center text-sm">🛡</div>
+                            <div>
+                                <h4 class="text-sm font-bold text-system-ink1 arabic">أذكار الصباح</h4>
+                                <p class="text-[10px] mono text-system-ink3">05:40 → 07:30</p>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-bold mono flex items-center gap-1" style="color:#4ADE80"><span class="w-1.5 h-1.5 rounded-full pulse inline-block" style="background:#4ADE80"></span>DONE</span>
+                    </div>
+                    <div class="w-full h-1 rounded-full" style="background:#5D9187">
+                        <div class="h-full rounded-full bg-system-accent" style="width:100%"></div>
+                    </div>
+                    <p class="text-[10px] text-system-ink3 mono">Completed · Resume within window</p>
+                </div>
+            </div>
+
+            <!-- Metric card -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Metric Card</span>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="rounded-xl p-3 space-y-1" style="background:#0F3E36;border:1px solid #5D9187">
+                        <p class="text-[9px] mono text-system-ink3 uppercase">Streak</p>
+                        <p class="text-2xl font-black text-system-accent mono">12d</p>
+                        <p class="text-[9px] mono" style="color:#4ADE80">↑ Steady</p>
+                    </div>
+                    <div class="rounded-xl p-3 space-y-1" style="background:#0F3E36;border:1px solid #5D9187">
+                        <p class="text-[9px] mono text-system-ink3 uppercase">This Month</p>
+                        <p class="text-2xl font-black text-system-ink1 mono">94%</p>
+                        <p class="text-[9px] mono" style="color:#F59E0B">~ 1 missed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toggle + notification -->
+            <div class="bg-system-card border border-system-border rounded-3xl p-6 space-y-4">
+                <span class="text-[10px] text-system-accent uppercase tracking-widest font-extrabold mono">Controls</span>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs mono text-system-ink2">EVENING REMINDER</span>
+                        <div class="w-11 h-6 rounded-full p-0.5 bg-system-accent flex items-center justify-end">
+                            <div class="w-5 h-5 rounded-full bg-system-base shadow-md"></div>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs mono text-system-ink2">NOTIFICATIONS</span>
+                        <div class="w-11 h-6 rounded-full p-0.5 flex items-center" style="background:#0F3E36;border:1px solid #5D9187">
+                            <div class="w-5 h-5 rounded-full shadow-md" style="background:#153F38"></div>
+                        </div>
+                    </div>
+                    <!-- Toast preview -->
+                    <div class="mt-2 flex items-center gap-3 bg-system-panel border rounded-xl px-4 py-2.5 text-xs" style="border-color:rgba(197,168,128,0.3);border-left:3px solid #C5A880">
+                        <span class="text-system-ink1 font-semibold flex-1">Wird saved. May it be accepted.</span>
+                        <span class="text-system-ink3 cursor-pointer">✕</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILL: MOCKUPS — restyle to active theme tokens; keep Arabic greeting -->
+    <!-- ⑦ LIVE MOCKUPS -->
+    <section id="mockups" class="scroll-mt-24 space-y-8">
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div class="flex items-center gap-3">
+                <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">06</span>
+                <h2 class="text-2xl font-extrabold text-system-ink1">Live UI Mockups</h2>
+            </div>
+            <div class="flex items-center gap-2 bg-system-card border border-system-border rounded-2xl p-1.5">
+                <button id="btn-dark" onclick="switchMockupTheme('dark')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-system-panel text-system-accent border border-system-accent/30">🌑 Dark Mode</button>
+                <button id="btn-light" onclick="switchMockupTheme('light')" class="px-4 py-2 rounded-xl text-xs font-bold transition text-system-ink3">☀️ Light Mode</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Mockup 1: Dashboard Home -->
+            <div id="mock-home" class="rounded-3xl p-8 min-h-80 flex flex-col justify-between transition-all duration-500 relative overflow-hidden border" style="background:#08211D;border-color:rgba(197,168,128,0.2)">
+                <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+                <div class="absolute top-0 left-0 w-64 h-64 rounded-full blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2" style="background:rgba(197,168,128,0.06)"></div>
+                <div class="relative z-10">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="font-extrabold text-system-accent text-xl amiri">وقفة</span>
+                        <span id="mock-home-badge" class="text-[10px] text-system-ink3 border rounded-lg px-2 py-0.5 font-bold mono" style="border-color:#5D9187;background:#0F3E36">Home · Dark</span>
+                    </div>
+                    <h3 id="mock-home-title" class="text-xl font-bold text-system-ink1 mb-1">مرحباً، محمد</h3>
+                    <p id="mock-home-sub" class="text-xs text-system-ink3 mb-6 arabic">الأربعاء، ١٢ يونيو ٢٠٢٦ — وردُك اليومي بانتظارك</p>
+                    <div id="mock-home-stats" class="grid grid-cols-2 gap-3">
+                        <div class="rounded-xl p-3 border" style="background:#0F3E36;border-color:#5D9187">
+                            <p class="text-[9px] mono text-system-ink3 uppercase">Today's Wird</p>
+                            <p class="text-2xl font-black text-system-accent mono">3/4</p>
+                        </div>
+                        <div class="rounded-xl p-3 border" style="background:#0F3E36;border-color:#5D9187">
+                            <p class="text-[9px] mono text-system-ink3 uppercase">Streak</p>
+                            <p class="text-2xl font-black mono" style="color:#4ADE80">12 days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 mt-6 relative z-10">
+                    <button class="bg-system-accent hover:bg-system-accent2 text-system-base font-bold text-xs px-5 py-2.5 rounded-xl transition" arabic">ابدأ جلسة المساء</button>
+                    <button class="border text-system-ink1 font-bold text-xs px-5 py-2.5 rounded-xl transition hover:border-system-accent/40" style="border-color:#5D9187;background:transparent" arabic">الإعدادات</button>
+                </div>
+            </div>
+
+            <!-- Mockup 2: Service List -->
+            <div id="mock-services" class="bg-system-card border border-system-border rounded-3xl p-8 min-h-80 flex flex-col justify-between transition-all duration-500">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span id="mock-svc-badge" class="text-[10px] bg-system-panel text-system-accent border border-system-accent/20 rounded-lg px-2 py-1 font-bold arabic">🕰 أقسام اليوم</span>
+                        <span class="text-[10px] text-system-accent mono font-bold">3 / 4</span>
+                    </div>
+                    <h3 id="mock-svc-title" class="text-base font-bold text-system-ink1 mb-4">Today's Sections</h3>
+                    <div id="mock-svc-list" class="space-y-2">
+                        <div class="flex justify-between items-center text-xs mono p-2.5 rounded-xl" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2)">
+                            <span class="text-system-ink2 arabic">أذكار الصباح <span class="text-system-ink3 mono">· 05:40</span></span>
+                            <span class="font-bold flex items-center gap-1" style="color:#4ADE80"><span class="w-1.5 h-1.5 rounded-full pulse inline-block" style="background:#4ADE80"></span>DONE</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs mono p-2.5 rounded-xl" style="background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.2)">
+                            <span class="text-system-ink2 arabic">أذكار الاستيقاظ <span class="text-system-ink3 mono">· fajr</span></span>
+                            <span class="font-bold flex items-center gap-1" style="color:#4ADE80"><span class="w-1.5 h-1.5 rounded-full pulse inline-block" style="background:#4ADE80"></span>DONE</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs mono p-2.5 rounded-xl" style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.2)">
+                            <span class="text-system-ink2 arabic">أذكار المساء <span class="text-system-ink3 mono">· 16:45</span></span>
+                            <span class="font-bold flex items-center gap-1" style="color:#F59E0B"><span class="w-1.5 h-1.5 rounded-full pulse inline-block" style="background:#F59E0B"></span>OPEN</span>
+                        </div>
+                    </div>
+                </div>
+                <button id="mock-svc-btn" class="mt-6 w-full py-2.5 rounded-xl font-bold text-xs bg-system-accent text-system-base hover:bg-system-accent2 transition" arabic">عرض الورد كاملاً</button>
+            </div>
+
+            <!-- Mockup 3: Notification widget -->
+            <div id="mock-notif" class="rounded-3xl p-8 min-h-64 flex flex-col justify-between transition-all duration-500 border" style="background:#153F38;border-color:rgba(197,168,128,0.25)">
+                <div>
+                    <div class="flex justify-between items-center mb-5">
+                        <span class="text-[10px] text-system-ink3 mono font-bold uppercase">Gentle Reminders</span>
+                        <span id="mock-notif-badge" class="text-[10px] bg-system-accent text-system-base font-bold px-2.5 py-0.5 rounded-lg mono">Notification</span>
+                    </div>
+                    <h3 class="text-base font-extrabold text-system-ink1 mb-3 arabic">تذكير المساء 🌙</h3>
+                    <div id="mock-notif-inner" class="rounded-2xl p-4 flex items-start gap-3" style="background:#5D9187;border:1px solid rgba(197,168,128,0.35)">
+                        <span class="text-xl mt-0.5">🕰</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-system-ink1 arabic">حان وقتُ أذكار المساء</h4>
+                            <p class="text-[11px] text-system-ink2 mt-1 arabic">القسم متاح الآن — أكمل وِردك بهدوء قبل انتهاء نافذته.</p>
+                            <p class="text-[10px] mono text-system-ink3 mt-1">window 16:45–19:20 · resume enabled</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-[10px] text-system-ink3 mt-4 italic">Gold borders on deep emerald — the signature Waqfa notification aesthetic.</p>
+            </div>
+
+            <!-- Mockup 4: Quick checklist / profiles -->
+            <div id="mock-checklist" class="bg-system-card border border-system-border rounded-3xl p-8 min-h-64 flex flex-col justify-between transition-all duration-500">
+                <div>
+                    <h3 id="mock-cl-title" class="text-base font-extrabold text-system-ink1 mb-4 flex items-center gap-2">
+                        <span>⚖</span> Content Governance
+                    </h3>
+                    <div class="space-y-2.5" id="mock-cl-list">
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 rounded border-2 border-system-accent bg-system-accent flex items-center justify-center flex-shrink-0">
+                                <svg class="w-2.5 h-2.5 text-system-base" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                            </div>
+                            <span class="text-xs text-system-ink3 line-through">Committee review — morning adhkar batch</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 rounded border-2 flex-shrink-0" style="border-color:#153F38;background:#153F38"></div>
+                            <span class="text-xs text-system-ink2 group-hover:text-system-ink1 transition">Verify Ruqyah section sources</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 rounded border-2 flex-shrink-0" style="border-color:#153F38;background:#153F38"></div>
+                            <span class="text-xs text-system-ink2 group-hover:text-system-ink1 transition">Approve dhikr library additions</span>
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer group">
+                            <div class="w-4 h-4 rounded border-2 flex-shrink-0" style="border-color:#153F38;background:#153F38"></div>
+                            <span class="text-xs text-system-ink2 group-hover:text-system-ink1 transition">Audit contrast ratios for new tokens</span>
+                        </label>
+                    </div>
+                </div>
+                <p id="mock-cl-footer" class="text-[10px] text-system-ink3 mt-4 italic">Every religious text passes the review committee (اللجنة) before entering the app — non-negotiable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑧ DEV TOKENS -->
+    <section id="code" class="scroll-mt-24 space-y-8 mb-10">
+        <div class="flex items-center gap-3">
+            <span class="text-sm bg-system-accent text-system-base font-black px-3 py-1 rounded-xl mono">07</span>
+            <h2 class="text-2xl font-extrabold text-system-ink1">Developer Token Export</h2>
+        </div>
+        <p class="text-system-ink2 text-sm max-w-xl">Production-ready token configurations for the Waqfa stack. Copy and use directly.</p>
+
+        <div class="bg-system-card border border-system-border rounded-3xl overflow-hidden">
+            <!-- Tabs -->
+            <div class="flex border-b overflow-x-auto" style="border-color:#5D9187;background:#0F3E36">
+                <button onclick="switchTab('tailwind')" id="tab-tailwind" class="px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-active">Tailwind CSS</button>
+                <button onclick="switchTab('css')" id="tab-css" class="px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-inactive">CSS Variables</button>
+                <button onclick="switchTab('react')" id="tab-react" class="px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-inactive">React Theme</button>
+                <button onclick="switchTab('figma')" id="tab-figma" class="px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-inactive">Figma Tokens</button>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs text-system-accent uppercase tracking-widest font-bold mono" id="code-label">tailwind.config.js</span>
+                    <button onclick="copyCodeBlock()" class="flex items-center gap-1.5 text-xs text-system-accent hover:text-system-accent2 transition font-bold mono">📋 Copy Code</button>
+                </div>
+                <pre class="bg-system-panel text-system-ink2 p-5 rounded-2xl overflow-x-auto border text-xs mono leading-relaxed" style="border-color:#5D9187"><code id="code-block">colors: {
+  mirsad: {
+    base:   '#08211D',   // Page background
+    panel:  '#0F3E36',   // Sidebar & header
+    card:   '#153F38',   // Component surfaces
+    border: '#5D9187',   // Dividers & borders
+    gold:   '#C5A880',   // Primary accent
+    gold2:  '#D3BEA0',   // Hover / lighter state
+    ink1:   '#EBF4F3',   // Primary text
+    ink2:   '#ACD2CC',   // Secondary text
+    ink3:   '#6D8C87',   // Muted / tertiary text
+    ink4:   '#153F38',   // Subtle background layer
+  }
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t mt-20 pt-8 max-w-7xl mx-auto px-6 pb-12" style="border-color:#5D9187">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <svg class="w-5 h-5 logo-on-dark" aria-hidden="true"><use href="#waqfa-mark-book"></use></svg>
+            <span class="text-xs text-system-ink3">© 2026 <strong class="text-system-accent">Mohammed Alamoudi</strong>. Waqfa — <span class="amiri">هذا التطبيق وقفٌ لله تعالى</span>.</span>
+        </div>
+        <span class="text-[10px] mono text-system-ink3">Brand Identity System Version Approved · Tokens from Colour System v2.0</span>
+    </div>
+</footer>
+
+<script>
+// Scroll
+function scrollTo(id){
+    const el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+}
+
+// Toast
+function toast(msg){
+    const t=document.getElementById('toast');
+    document.getElementById('toast-msg').textContent=msg;
+    t.classList.remove('opacity-0','translate-y-4');
+    t.classList.add('opacity-100','translate-y-0');
+    setTimeout(()=>{t.classList.add('opacity-0','translate-y-4');t.classList.remove('opacity-100','translate-y-0');},2200);
+}
+
+// Copy color
+function copyColor(hex){
+    navigator.clipboard.writeText(hex).then(()=>toast(`Copied: ${hex}`));
+}
+
+// Live type tester
+function updateType(v){
+    const clean=v.trim()||'وقفة — Waqfa';
+    document.getElementById('type-sans').textContent=clean;
+    document.getElementById('type-arabic').textContent=v.trim()||'وقفة — رفيق الذِّكر والوِرد';
+    document.getElementById('type-mono').textContent=v.trim()||'wird.morning 05:40–07:30';
+}
+
+// Mockup theme switcher
+function switchMockupTheme(theme){
+    const btnD=document.getElementById('btn-dark');
+    const btnL=document.getElementById('btn-light');
+    const mockHome=document.getElementById('mock-home');
+    const mockSvc=document.getElementById('mock-services');
+    const mockNotif=document.getElementById('mock-notif');
+    const mockCl=document.getElementById('mock-checklist');
+
+    if(theme==='dark'){
+        btnD.className='px-4 py-2 rounded-xl text-xs font-bold transition bg-system-panel text-system-accent border border-system-accent/30';
+        btnL.className='px-4 py-2 rounded-xl text-xs font-bold transition text-system-ink3';
+
+        mockHome.style.cssText='background:#08211D;border-color:rgba(197,168,128,0.2);transition:all 0.5s';
+        document.getElementById('mock-home-badge').textContent='Home · Emerald';
+        document.getElementById('mock-home-badge').style.cssText='background:#0F3E36;border-color:#5D9187;color:#ACD2CC';
+        document.getElementById('mock-home-title').style.color='#EBF4F3';
+        document.getElementById('mock-home-sub').style.color='#ACD2CC';
+
+        mockSvc.style.cssText='background:#153F38;border-color:#5D9187;transition:all 0.5s';
+        document.getElementById('mock-svc-title').style.color='#EBF4F3';
+
+        mockNotif.style.cssText='background:#0F3E36;border-color:rgba(197,168,128,0.25);transition:all 0.5s';
+        document.getElementById('mock-notif-inner').style.cssText='background:#153F38;border:1px solid rgba(197,168,128,0.35)';
+        document.getElementById('mock-notif-inner').querySelector('h4').style.color='#EBF4F3';
+
+        mockCl.style.cssText='background:#153F38;border-color:#5D9187;transition:all 0.5s';
+        document.getElementById('mock-cl-title').style.color='#EBF4F3';
+        document.getElementById('mock-cl-footer').textContent='Every religious text passes the review committee (اللجنة) before entering the app — non-negotiable.';
+
+    } else {
+        btnL.className='px-4 py-2 rounded-xl text-xs font-bold transition bg-system-panel text-system-accent border border-system-accent/30';
+        btnD.className='px-4 py-2 rounded-xl text-xs font-bold transition text-system-ink3';
+
+        mockHome.style.cssText='background:#F7F3EC;border-color:rgba(15,62,54,0.3);transition:all 0.5s';
+        document.getElementById('mock-home-badge').textContent='Home · Ivory';
+        document.getElementById('mock-home-badge').style.cssText='background:#F0ECE5;border-color:#948A79;color:#5C513D';
+        document.getElementById('mock-home-title').style.color='#352E23';
+        document.getElementById('mock-home-sub').style.color='#5C513D';
+
+        mockSvc.style.cssText='background:#FFFFFF;border-color:#948A79;transition:all 0.5s';
+        document.getElementById('mock-svc-title').style.color='#352E23';
+
+        mockNotif.style.cssText='background:#EBF4F3;border-color:rgba(95,71,32,0.35);transition:all 0.5s';
+        document.getElementById('mock-notif-inner').style.cssText='background:#FFFFFF;border:1px solid #948A79';
+        document.getElementById('mock-notif-inner').querySelector('h4').style.color='#352E23';
+
+        mockCl.style.cssText='background:#FFFFFF;border-color:#948A79;transition:all 0.5s';
+        document.getElementById('mock-cl-title').style.color='#352E23';
+        document.getElementById('mock-cl-footer').textContent='Same components on the Ivory theme — one token swap, identical AAA contrast discipline.';
+    }
+}
+
+// Code tab switcher
+const codeMap={
+    tailwind:{label:'tailwind.config.js',code:`colors: {
+  waqfa: {
+    // Emerald (dark) — audited v2.0 tokens
+    base:      '#08211D', // Page background
+    panel:     '#0F3E36', // Sidebar & header surfaces
+    card:      '#153F38', // Component surfaces
+    border:    '#5D9187', // Boundaries — 3.33:1 on panel
+    gold:      '#C5A880', // Identity gold — 7.46:1 on base
+    brand:     '#59C0AF', // Interactive teal — 7.69:1 on base
+    actionInk: '#241F14', // Text on gold — 7.25:1
+    sage:      '#6D8C87', // Logo strand / tertiary
+    ink1:      '#EBF4F3', // Primary text — 15.07:1
+    ink2:      '#ACD2CC', // Secondary text — 10.31:1
+  },
+  ivory: {
+    base:      '#F7F3EC', // Page background
+    surface:   '#FFFFFF', // Raised cards
+    surface2:  '#F0ECE5', // Secondary surface
+    border:    '#948A79', // Boundaries — 3.08:1 on base
+    accent:    '#0F3E36', // Deep green — primary actions
+    accentHi:  '#19675A', // Hover accent
+    gold:      '#C5A880', // Identity gold (decorative on light)
+    goldInk:   '#5F4720', // Legible gold text — 7.88:1
+    ink1:      '#352E23', // Primary text — 12.12:1
+    ink2:      '#5C513D', // Secondary text — 7.03:1
+  }
+}`},
+    css:{label:'theme-variables.css',code:`/* ===== WAQFA — 3 THEME TOKENS ===== */
+
+[data-theme="sovereign"] {
+  --base:    #1A1A1A;
+  --panel:   #242424;
+  --card:    #2E2E2E;
+  --border:  #4D4D4D;
+  --accent:    #FFC107;
+  --accent-hi: #FFD04D;
+  --accent-lo: #CC9900;
+  --ink1:    #F2F2F2;
+  --ink2:    #999999;
+  --ink3:    #666666;
+}
+
+[data-theme="ivory"] {
+  --base:      #F7F3EC;
+  --surface:   #FFFFFF;
+  --surface-2: #F0ECE5;
+  --border:    #948A79;  /* 3.08:1 boundary */
+  --accent:    #0F3E36;  /* deep green — primary */
+  --accent-hi: #19675A;
+  --gold:      #C5A880;
+  --gold-ink:  #5F4720;  /* 7.88:1 on base */
+  --ink1:      #352E23;  /* 12.12:1 */
+  --ink2:      #5C513D;  /* 7.03:1 */
+}
+
+[data-theme="emerald"] {
+  --base:       #08211D;
+  --panel:      #0F3E36;
+  --card:       #153F38;
+  --border:     #5D9187;  /* 3.33:1 boundary */
+  --accent:     #C5A880;  /* identity gold — 7.46:1 */
+  --brand:      #59C0AF;  /* interactive teal — 7.69:1 */
+  --action-ink: #241F14;  /* on gold — 7.25:1 */
+  --sage:       #6D8C87;  /* logo strand */
+  --ink1:       #EBF4F3;  /* 15.07:1 */
+  --ink2:       #ACD2CC;  /* 10.31:1 */
+}
+
+/* Semantic status — shared across all themes */
+:root { --st-up: #4ADE80; --st-sl: #F59E0B; --st-dn: #F43F5E; }
+
+/* Logo palette-trio (recolour one SVG geometry, never swap assets) */
+.logo-on-light { --logo-a:#0F3E36; --logo-b:#0F1140; --logo-gold:#C5A880; }
+.logo-on-dark  { --logo-a:#F2F2F2; --logo-b:#6D8C87; --logo-gold:#C5A880; }`},
+    react:{label:'theme.ts',code:`export const sovereign = {
+  base: '#1A1A1A', panel: '#242424', card: '#2E2E2E', border: '#4D4D4D',
+  accent: '#FFC107', accentHi: '#FFD04D', accentLo: '#CC9900',
+  ink1: '#F2F2F2', ink2: '#999999', ink3: '#666666',
+} as const;
+
+export const ivory = {
+  base: '#F7F3EC', surface: '#FFFFFF', surface2: '#F0ECE5', border: '#948A79',
+  accent: '#0F3E36', accentHi: '#19675A', gold: '#C5A880', goldInk: '#5F4720',
+  ink1: '#352E23', ink2: '#5C513D',
+} as const;
+
+export const emerald = {
+  base: '#08211D', panel: '#0F3E36', card: '#153F38', border: '#5D9187',
+  accent: '#C5A880', brand: '#59C0AF', actionInk: '#241F14', sage: '#6D8C87',
+  ink1: '#EBF4F3', ink2: '#ACD2CC',
+} as const;
+
+export const logo = {
+  onLight: { a: '#0F3E36', b: '#0F1140', gold: '#C5A880' },
+  onDark:  { a: '#F2F2F2', b: '#6D8C87', gold: '#C5A880' },
+} as const;
+
+export const status = { up: '#4ADE80', slow: '#F59E0B', down: '#F43F5E' } as const;`},
+    figma:{label:'figma-tokens.json',code:`{
+  "sovereign": {
+    "base":   { "value": "#1A1A1A", "type": "color" },
+    "accent": { "value": "#FFC107", "type": "color" },
+    "ink1":   { "value": "#F2F2F2", "type": "color" }
+  },
+  "ivory": {
+    "base":     { "value": "#F7F3EC", "type": "color" },
+    "accent":   { "value": "#0F3E36", "type": "color" },
+    "gold":     { "value": "#C5A880", "type": "color" },
+    "gold-ink": { "value": "#5F4720", "type": "color" },
+    "ink1":     { "value": "#352E23", "type": "color" }
+  },
+  "emerald": {
+    "base":   { "value": "#08211D", "type": "color" },
+    "accent": { "value": "#C5A880", "type": "color" },
+    "brand":  { "value": "#59C0AF", "type": "color" },
+    "ink1":   { "value": "#EBF4F3", "type": "color" }
+  }
+}`}
+};
+
+function switchPalette(theme){
+    document.querySelectorAll('[data-pt-theme]').forEach(el=>{
+        el.classList.toggle('hidden', el.getAttribute('data-pt-theme')!==theme);
+    });
+    document.querySelectorAll('[data-pt-tab]').forEach(b=>{
+        const on=b.getAttribute('data-pt-tab')===theme;
+        b.className='px-4 py-2 rounded-xl text-xs font-bold transition '+(on?'pt-tab-active':'pt-tab-inactive');
+    });
+}
+function switchTypo(theme){
+    document.querySelectorAll('[data-pt-typo]').forEach(el=>{
+        el.classList.toggle('hidden', el.getAttribute('data-pt-typo')!==theme);
+    });
+    document.querySelectorAll('[data-pt-typotab]').forEach(b=>{
+        const on=b.getAttribute('data-pt-typotab')===theme;
+        b.className='px-4 py-2 rounded-xl text-xs font-bold transition '+(on?'pt-tab-active':'pt-tab-inactive');
+    });
+}
+function switchTab(tab){
+    ['tailwind','css','react','figma'].forEach(t=>{
+        const el=document.getElementById(`tab-${t}`);
+        el.className=t===tab?'px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-active':'px-6 py-4 text-xs font-bold border-b-2 transition shrink-0 tab-inactive';
+    });
+    document.getElementById('code-block').textContent=codeMap[tab].code;
+    document.getElementById('code-label').textContent=codeMap[tab].label;
+}
+
+function copyCodeBlock(){
+    const code=document.getElementById('code-block').textContent;
+    navigator.clipboard.writeText(code).then(()=>toast('Code copied to clipboard!'));
+}
+
+// Word export
+function exportWord(){
+    const h=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Waqfa Brand Identity</title><style>body{font-family:Arial,sans-serif;padding:30px;color:#1a1a1a;line-height:1.6}h1{color:#0F3E36;font-size:24pt;border-bottom:2px solid #C5A880;padding-bottom:6px}h2{font-size:16pt;margin-top:24px;border-bottom:1px solid #ccc}table{width:100%;border-collapse:collapse;margin:15px 0}th{background:#f2f2f2;border:1px solid #ddd;padding:8px;text-align:left}td{border:1px solid #ddd;padding:8px}code{font-family:'Courier New';background:#f5f5f5;padding:2px 4px;font-size:11pt}</style></head><body>`;
+    const b=`<h1>Waqfa (وقفة) — Visual Brand Identity System Version Approved</h1>
+<p><strong>Lead:</strong> Mohammed Alamoudi &nbsp;|&nbsp; <strong>Project:</strong> Waqfa — Dhikr &amp; Wird Companion &nbsp;|&nbsp; <strong>Dedication:</strong> هذا التطبيق وقفٌ لله تعالى</p>
+<h2>Brand Philosophy</h2>
+<p><strong>Waqf Dedication (وقف):</strong> The app exists as an endowment. No ads, no dark patterns, no engagement traps — the design serves the worshipper.</p>
+<p><strong>Sakina (سكينة):</strong> Clarity before action. Deep emerald and ivory carry calm; gold marks only what matters. Low visual noise is a spiritual requirement.</p>
+<p><strong>Amanah (أمانة):</strong> Every religious text passes the review committee (اللجنة) before entering the app, and every colour pair is contrast-measured at source (WCAG AAA discipline).</p>
+<h2>Color System — Three Themes</h2>
+<h3>02.01 Sovereign — fixed portfolio flagship (Cairo + Ubuntu)</h3>
+<table>
+<tr><th>Token</th><th>Hex</th><th>Role</th></tr>
+<tr><td>base</td><td><code>#1A1A1A</code></td><td>Page background</td></tr>
+<tr><td>panel</td><td><code>#242424</code></td><td>Sidebar &amp; header backgrounds</td></tr>
+<tr><td>card</td><td><code>#2E2E2E</code></td><td>Component &amp; card surfaces</td></tr>
+<tr><td>border</td><td><code>#4D4D4D</code></td><td>Dividers, borders, separators</td></tr>
+<tr><td>accent</td><td><code>#FFC107</code></td><td>Primary accent — actions, highlights</td></tr>
+<tr><td>accent-hi</td><td><code>#FFD04D</code></td><td>Hover / bright accent</td></tr>
+<tr><td>accent-lo</td><td><code>#CC9900</code></td><td>Pressed / deep accent</td></tr>
+<tr><td>ink1</td><td><code>#F2F2F2</code></td><td>Primary text</td></tr>
+<tr><td>ink2</td><td><code>#999999</code></td><td>Secondary / body text</td></tr>
+<tr><td>ink3</td><td><code>#666666</code></td><td>Muted / tertiary text</td></tr>
+</table>
+<h3>02.02 Ivory (عاج) — light theme, WCAG-audited</h3>
+<table>
+<tr><th>Token</th><th>Hex</th><th>Role / Measured ratio</th></tr>
+<tr><td>base</td><td><code>#F7F3EC</code></td><td>Page background (ivory)</td></tr>
+<tr><td>surface</td><td><code>#FFFFFF</code></td><td>Raised cards &amp; panels</td></tr>
+<tr><td>surface-2</td><td><code>#F0ECE5</code></td><td>Subtle secondary surface</td></tr>
+<tr><td>border</td><td><code>#948A79</code></td><td>Boundaries — 3.08:1 on base</td></tr>
+<tr><td>accent</td><td><code>#0F3E36</code></td><td>Waqfa deep green — primary actions</td></tr>
+<tr><td>accent-hi</td><td><code>#19675A</code></td><td>Hover / raised accent</td></tr>
+<tr><td>gold</td><td><code>#C5A880</code></td><td>Identity gold — logo centre, callout actions</td></tr>
+<tr><td>gold-ink</td><td><code>#5F4720</code></td><td>Legible gold text — 7.88:1 on base</td></tr>
+<tr><td>ink1</td><td><code>#352E23</code></td><td>Primary text — 12.12:1 on base</td></tr>
+<tr><td>ink2</td><td><code>#5C513D</code></td><td>Secondary text — 7.03:1 on base</td></tr>
+</table>
+<h3>02.03 Emerald (زمرد) — dark theme, WCAG-audited</h3>
+<table>
+<tr><th>Token</th><th>Hex</th><th>Role / Measured ratio</th></tr>
+<tr><td>base</td><td><code>#08211D</code></td><td>Page background (emerald night)</td></tr>
+<tr><td>panel</td><td><code>#0F3E36</code></td><td>Sidebar &amp; header surfaces</td></tr>
+<tr><td>card</td><td><code>#153F38</code></td><td>Component surfaces</td></tr>
+<tr><td>border</td><td><code>#5D9187</code></td><td>Boundaries — 3.33:1 on panel</td></tr>
+<tr><td>accent</td><td><code>#C5A880</code></td><td>Identity gold — 7.46:1 on base</td></tr>
+<tr><td>brand</td><td><code>#59C0AF</code></td><td>Interactive teal — 7.69:1 on base</td></tr>
+<tr><td>action-ink</td><td><code>#241F14</code></td><td>Text on gold actions — 7.25:1</td></tr>
+<tr><td>sage</td><td><code>#6D8C87</code></td><td>Logo strand / tertiary marks</td></tr>
+<tr><td>ink1</td><td><code>#EBF4F3</code></td><td>Primary text — 15.07:1 on base</td></tr>
+<tr><td>ink2</td><td><code>#ACD2CC</code></td><td>Secondary text — 10.31:1 on base</td></tr>
+</table>
+<p><strong>Semantic status (shared):</strong> UP <code>#4ADE80</code> · SLOW <code>#F59E0B</code> · DOWN <code>#F43F5E</code></p>
+<p><strong>Two golds coexist by design:</strong> <code>#BFA27E</code> is the product palette's Sand Gold (Office Accent 2); <code>#C5A880</code> is the identity gold (logo centre, Accent 6, action surfaces).</p>
+<h2>Typography</h2>
+<p><strong>Sovereign:</strong> Ubuntu (Latin UI) + Cairo (Arabic RTL) + Ubuntu Mono (data) — fixed.</p>
+<p><strong>Ivory &amp; Emerald (Waqfa themes):</strong> Cairo (Arabic + Latin UI) + Amiri (wordmark &amp; classical display) + Ubuntu Mono (data). One typographic voice across both themes, per the brand's standing typography decision. Arabic line-height ≥ 1.9.</p>
+<h2>Logo Rules</h2>
+<p><strong>Palette Trio Rule:</strong> one SVG geometry, recoloured through tokens. Light surfaces: Midnight Navy <code>#0F1140</code> + Deep Green <code>#0F3E36</code>. Dark surfaces: Soft Gray <code>#F2F2F2</code> + Sage Teal <code>#6D8C87</code>. The gold centre <code>#C5A880</code> never changes. Prohibited: glow effects; rotation; foreign palettes; the light trio on dark surfaces (deep green measures 1.0:1 there — invisible). Clear space 1× mark width; minimum size 24px digital.</p>
+<h2>Component States</h2>
+<p>All interactive components support 5 states: Default, Hover, Active, Disabled, Error. State colors use semantic CSS custom properties — never hardcoded Tailwind classes. Boundaries hold the 3:1 non-text bar; text pairs hold 7:1 (AAA).</p>
+<h2>Permanent Credit</h2>
+<p>© 2026 Mohammed Alamoudi. Waqfa is dedicated as a waqf — هذا التطبيق وقفٌ لله تعالى. The dedication line is non-removable in all themes and builds.</p>`;
+    const payload=h+b+'</body></html>';
+    const blob=new Blob(['\ufeff'+payload],{type:'application/msword;charset=utf-8'});
+    const link=document.createElement('a');link.href=URL.createObjectURL(blob);
+    link.download='Brand_Identity-Waqfa_Version_Approved.doc';
+    document.body.appendChild(link);link.click();document.body.removeChild(link);
+    toast('Brand Book exported!');
+}
+</script>
+</body>
+</html>
