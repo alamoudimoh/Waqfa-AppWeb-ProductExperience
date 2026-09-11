@@ -1,0 +1,169 @@
+/* V3.1 polish: local context, restrained persistent mark, day story and share menu.
+   Every colour resolves to an official token declared in tokens.css. */
+
+.day-environment {
+  --local-start-a: var(--navy);
+  --local-start-b: var(--emerald);
+  background:
+    linear-gradient(calc(180deg - var(--light-inclination) * 1deg),
+      var(--local-start-a) 0,
+      var(--local-start-a) 180px,
+      color-mix(in srgb, var(--local-start-a) 68%, var(--local-start-b)) 520px,
+      var(--local-start-b) 820px,
+      transparent 1480px),
+    linear-gradient(110deg, transparent 20%, color-mix(in srgb, var(--ivory) 3%, transparent) 55%, transparent 85%),
+    linear-gradient(calc(180deg - var(--light-inclination) * 1deg),
+      var(--navy) 0,
+      var(--navy) 100px,
+      color-mix(in srgb, var(--navy), var(--emerald)) calc(var(--morning-start) * .36),
+      var(--emerald) calc(var(--morning-start) - 390px),
+      var(--emerald-panel) calc(var(--morning-start) - 230px),
+      color-mix(in srgb, var(--emerald-panel) 80%, var(--ivory)) calc(var(--morning-start) - 100px),
+      color-mix(in srgb, var(--emerald-panel) 45%, var(--ivory)) calc(var(--morning-start) + 50px),
+      color-mix(in srgb, var(--emerald-panel) 12%, var(--ivory)) calc(var(--morning-start) + 210px),
+      var(--ivory) calc(var(--morning-start) + 320px),
+      var(--ivory-surface) var(--noon-middle),
+      var(--ivory-secondary) var(--afternoon-middle),
+      var(--ivory-secondary) calc(var(--sunset-start) - 300px),
+      color-mix(in srgb, var(--emerald-panel) 12%, var(--ivory-secondary)) calc(var(--sunset-start) - 200px),
+      color-mix(in srgb, var(--emerald-panel) 45%, var(--ivory-secondary)) calc(var(--sunset-start) - 40px),
+      color-mix(in srgb, var(--emerald-panel) 80%, var(--ivory-secondary)) calc(var(--sunset-start) + 110px),
+      var(--emerald-panel) calc(var(--sunset-start) + 240px),
+      var(--emerald) var(--night-middle),
+      var(--emerald) 100%);
+}
+
+.day-environment[data-local-phase="morning"] { --local-start-a: var(--ivory); --local-start-b: var(--ivory-surface); }
+.day-environment[data-local-phase="noon"] { --local-start-a: var(--ivory-surface); --local-start-b: var(--ivory); }
+.day-environment[data-local-phase="afternoon"] { --local-start-a: var(--ivory-secondary); --local-start-b: var(--ivory); }
+.day-environment[data-local-phase="sunset"] { --local-start-a: var(--emerald-panel); --local-start-b: var(--emerald); }
+.day-environment[data-local-phase="night"] { --local-start-a: var(--navy); --local-start-b: var(--emerald); }
+
+/* The in-flow header owns the full lockup. Only the mark persists afterward. */
+.floating-mark {
+  position: fixed;
+  z-index: 80;
+  inset-inline-end: 4px;
+  top: 4px;
+  color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .24s ease, visibility .24s ease;
+}
+.floating-mark.is-visible { opacity: .82; visibility: visible; pointer-events: auto; }
+.floating-mark:hover { opacity: 1; }
+.floating-mark-space { display: block; padding: 24px; }
+.floating-mark .waqfa-mark { width: 24px; }
+
+.journey-progress {
+  position: fixed;
+  z-index: 75;
+  inset-inline-end: 0;
+  top: 0;
+  width: 3px;
+  height: 100vh;
+  background: color-mix(in srgb, var(--gold) 16%, transparent);
+}
+.journey-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  background: var(--gold);
+  will-change: transform;
+}
+
+.day-rail {
+  position: fixed;
+  z-index: 70;
+  inset-inline-end: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  color: var(--text);
+}
+.day-rail-label { font-size: 13px; font-weight: 700; }
+.day-rail-marker { display: block; width: 1px; height: 52px; background: color-mix(in srgb, var(--gold) 35%, transparent); position: relative; }
+.day-rail-marker i { position: absolute; top: 0; inset-inline-start: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+/* The waqf statement carries the section; sharing follows as one quiet action. */
+.dedication { width: min(1040px, calc(100% - 160px)); padding-block: 170px 125px; }
+.dedication-body { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px 90px; margin-top: 52px; }
+.dedication h2 { grid-column: 1 / -1; max-width: 900px; font: 400 clamp(48px, 5.8vw, 82px)/1.9 Amiri, serif; color: var(--text); margin: 0 0 20px; }
+.dedication-body > p { max-width: 610px; color: var(--muted); }
+.dedication .permanent-dedication { grid-column: 1; font: 400 24px/1.9 Cairo, sans-serif; color: var(--text); padding-top: 12px; }
+.waqf-share { grid-column: 1; margin-top: 22px; position: relative; }
+.share-main { min-width: 190px; }
+.share-panel {
+  display: grid;
+  width: min(260px, 100%);
+  min-width: 220px;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  background: var(--emerald-panel);
+  color: var(--emerald-ink);
+}
+.share-panel[hidden] { display: none; }
+.share-panel a,
+.share-panel button {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  text-align: start;
+}
+.share-panel a:hover,
+.share-panel button:hover { background: var(--emerald-surface); text-decoration: none; }
+.share-panel > :last-child { border-bottom: 0; }
+.share-close { color: var(--emerald-muted) !important; }
+.share-status { min-height: 28px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+
+.closing-effect { margin: -14px 0 28px; color: var(--muted); font-size: 14px; }
+
+/* The wide layout places this copy over the softest part of the light shift. */
+.opening[data-theme="light"] .hero-invitation > p,
+.opening[data-theme="light"] .hero-description > p { color: var(--action-ink); }
+
+@media (max-width: 1100px) {
+  .dedication-body { gap: 22px 60px; }
+}
+
+@media (max-width: 800px) {
+  .journey-progress { width: 2px; }
+  .day-rail-label { display: none; }
+  .day-rail { inset-inline-end: 11px; gap: 0; }
+  .day-rail-marker { height: 34px; opacity: .75; }
+  .dedication { width: calc(100% - 100px); }
+  .dedication-body { grid-template-columns: 1fr; }
+  .dedication .permanent-dedication, .waqf-share { grid-column: 1; }
+}
+
+@media (max-width: 620px) {
+  .floating-mark { inset-inline-end: 0; top: 0; }
+  .floating-mark-space { padding: 20px; }
+  .floating-mark .waqfa-mark { width: 24px; }
+  .day-rail { display: none; }
+  .dedication { padding-block: 120px 65px; }
+  .dedication-body { display: block; margin-top: 28px; }
+  .dedication h2 { font-size: clamp(42px, 13vw, 62px); margin-bottom: 25px; }
+  .dedication-body > p { font-size: 15px; }
+  .dedication .permanent-dedication { font-size: 19px; margin-top: 22px; }
+  .waqf-share { margin-top: 34px; }
+  .share-main { min-width: 180px; }
+  .share-panel { width: min(260px, calc(100vw - 44px)); }
+  .closing-effect { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-mark { transition: none; }
+}

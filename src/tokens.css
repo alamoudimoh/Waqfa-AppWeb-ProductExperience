@@ -1,0 +1,69 @@
+/* Source: Waqfa-color_palette.html, theme tokens; Waqfa-brand_identity.html,
+   Ivory / Emerald and logo trio. No palette is generated for a time of day. */
+:root {
+  --ivory: #F7F3EC;
+  --ivory-surface: #FFFFFF;
+  --ivory-secondary: #F0ECE5;
+  --ivory-ink: #352E23;
+  --ivory-muted: #5C513D;
+  --ivory-boundary: #948A79;
+  --emerald: #08211D;
+  --emerald-panel: #0F3E36;
+  --emerald-surface: #153F38;
+  --emerald-ink: #EBF4F3;
+  --emerald-muted: #ACD2CC;
+  --emerald-boundary: #5D9187;
+  --green-hover: #19675A;
+  --teal: #59C0AF;
+  --navy: #0F1140;
+  --sage: #6D8C87;
+  --logo-gray: #F2F2F2;
+  --gold: #C5A880;
+  --gold-hover: #D3BEA0;
+  --gold-ink: #5F4720;
+  --action-ink: #241F14;
+}
+
+:root, [data-theme="light"] {
+  --page: var(--ivory);
+  --surface: var(--ivory-surface);
+  --surface-secondary: var(--ivory-secondary);
+  --text: var(--ivory-ink);
+  --muted: var(--ivory-muted);
+  --line: var(--ivory-boundary);
+  --brand: var(--emerald-panel);
+  --brand-hover: var(--green-hover);
+  --brand-contrast: var(--ivory-surface);
+  --focus-outer: var(--emerald-panel);
+  --focus-inner: var(--ivory-surface);
+  --logo-a: var(--emerald-panel);
+  --logo-b: var(--navy);
+  --logo-gold: var(--gold);
+  --wordmark: var(--gold-ink);
+}
+[data-theme="dark"] {
+  --page: var(--emerald);
+  --surface: var(--emerald-panel);
+  --surface-secondary: var(--emerald-surface);
+  --text: var(--emerald-ink);
+  --muted: var(--emerald-muted);
+  --line: var(--emerald-boundary);
+  --brand: var(--teal);
+  --brand-hover: var(--emerald-muted);
+  --brand-contrast: var(--emerald);
+  --focus-outer: var(--emerald-ink);
+  --focus-inner: var(--emerald);
+  --logo-a: var(--logo-gray);
+  --logo-b: var(--sage);
+  --wordmark: var(--gold);
+}
+
+/* V2 paints the complete day on one shared canvas in styles.css.
+   Section themes select foreground / interaction semantics, not backgrounds.
+   Use primary ink for the quiet afternoon text over Ivory secondary. */
+[data-phase="afternoon"] { --muted: var(--ivory-ink); }
+
+@media (prefers-contrast: more) {
+  :root, [data-theme="light"] { --muted: var(--ivory-ink); --line: var(--ivory-muted); }
+  [data-theme="dark"] { --muted: var(--emerald-ink); --line: var(--emerald-muted); }
+}

@@ -5,3 +5,5 @@ dist/
 !.env.example
 .sites-runtime/
 *.tsbuildinfo
+test-results/
+playwright-report/
