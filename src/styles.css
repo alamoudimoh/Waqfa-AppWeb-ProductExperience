@@ -97,7 +97,7 @@ a:hover { text-decoration: underline; text-underline-offset: 7px; }
 
 /* Morning opens as an editorial spread, with an unframed reading space. */
 .morning { padding-block: 340px 70px; }
-.morning > .shell > .chapter { margin-inline-start: 9%; }
+.morning > .shell > [data-local-context="journey"] { margin-inline-start: 9%; }
 .morning-heading { display: grid; grid-template-columns: 1.35fr 1fr; gap: 72px; align-items: end; margin-block: 28px 80px; margin-inline-start: 9%; }
 .morning-heading h2 { font-size: clamp(31px, 3.15vw, 48px); }
 .morning-heading h2 span { color: var(--brand); }
@@ -203,7 +203,7 @@ a:hover { text-decoration: underline; text-underline-offset: 7px; }
   .hero-invitation > p { font-size: 13px; }
   .hero-description > p { font-size: 16px; }
   .morning-heading { margin-inline-start: 4%; gap: 40px; }
-  .morning > .shell > .chapter { margin-inline-start: 4%; }
+  .morning > .shell > [data-local-context="journey"] { margin-inline-start: 4%; }
   .wird-scene { gap: 5%; }
   .session-detail { padding-inline: 15px; }
   .continuation-layout { width: calc(100% - 140px); gap: 50px; }
@@ -278,7 +278,7 @@ a:hover { text-decoration: underline; text-underline-offset: 7px; }
   .chapter-rule { width: 30px; }
   .scene-note, .scene-label { font-size: 13px; }
   .morning { padding-block: 335px 35px; }
-  .morning > .shell > .chapter, .morning-heading { margin-inline-start: 0; }
+  .morning > .shell > [data-local-context="journey"], .morning-heading { margin-inline-start: 0; }
   .morning-heading { gap: 27px; margin-block: 25px 35px; }
   .morning-heading h2 { font-size: clamp(27px, 7.4vw, 36px); }
   .morning-heading > p { font-size: 15px; padding: 0; }

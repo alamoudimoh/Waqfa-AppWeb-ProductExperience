@@ -1,5 +1,5 @@
-/* V3: adaptive local-time opening, persistent brand, journey progress, and waqf sharing.
-   Uses only official tokens declared in tokens.css. */
+/* V3.1 polish: local context, restrained persistent mark, day story and share menu.
+   Every colour resolves to an official token declared in tokens.css. */
 
 .day-environment {
   --local-start-a: var(--navy);
@@ -39,19 +39,22 @@
 .day-environment[data-local-phase="sunset"] { --local-start-a: var(--emerald-panel); --local-start-b: var(--emerald); }
 .day-environment[data-local-phase="night"] { --local-start-a: var(--navy); --local-start-b: var(--emerald); }
 
-.header-brand-space { width: 154px; flex: 0 0 154px; }
-
-.floating-brand {
+/* The in-flow header owns the full lockup. Only the mark persists afterward. */
+.floating-mark {
   position: fixed;
   z-index: 80;
-  inset-inline-start: 22px;
-  top: 8px;
+  inset-inline-end: 4px;
+  top: 4px;
   color: var(--text);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .24s ease, visibility .24s ease;
 }
-.floating-brand .brand { min-height: 76px; }
-.floating-brand .mark-space { padding: 22px; }
-.floating-brand .waqfa-mark { width: 26px; }
-.floating-brand .wordmark { font-size: 32px; }
+.floating-mark.is-visible { opacity: .82; visibility: visible; pointer-events: auto; }
+.floating-mark:hover { opacity: 1; }
+.floating-mark-space { display: block; padding: 24px; }
+.floating-mark .waqfa-mark { width: 24px; }
 
 .journey-progress {
   position: fixed;
@@ -74,81 +77,93 @@
 .day-rail {
   position: fixed;
   z-index: 70;
-  inset-inline-end: 20px;
+  inset-inline-end: 22px;
   top: 50%;
   transform: translateY(-50%);
-  display: grid;
-  gap: 13px;
-}
-.day-rail span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--gold) 60%, transparent);
-  background: transparent;
-  transition: transform .2s ease, background-color .2s ease;
-}
-.day-rail span.active {
-  transform: scale(1.55);
-  background: var(--gold);
-}
-
-.waqf-share {
-  margin-top: 42px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-}
-.waqf-share-heading {
   display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-}
-.share-kicker { color: var(--muted); font-size: 13px; margin-bottom: 4px; }
-.waqf-share h3 { font: 400 31px/1.9 Amiri, serif; }
-.share-main { flex: 0 0 auto; }
-.share-copy { margin-top: 14px; max-width: 570px; color: var(--muted); font-size: 15px; }
-.share-platforms { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
-.share-platforms a,
-.share-platforms button {
-  min-height: 44px;
-  padding: 8px 15px;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: transparent;
+  align-items: center;
+  gap: 12px;
+  writing-mode: vertical-rl;
   color: var(--text);
+}
+.day-rail-label { font-size: 13px; font-weight: 700; }
+.day-rail-marker { display: block; width: 1px; height: 52px; background: color-mix(in srgb, var(--gold) 35%, transparent); position: relative; }
+.day-rail-marker i { position: absolute; top: 0; inset-inline-start: -2px; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+/* The waqf statement carries the section; sharing follows as one quiet action. */
+.dedication { width: min(1040px, calc(100% - 160px)); padding-block: 170px 125px; }
+.dedication-body { display: grid; grid-template-columns: 1.35fr .65fr; gap: 24px 90px; margin-top: 52px; }
+.dedication h2 { grid-column: 1 / -1; max-width: 900px; font: 400 clamp(48px, 5.8vw, 82px)/1.9 Amiri, serif; color: var(--text); margin: 0 0 20px; }
+.dedication-body > p { max-width: 610px; color: var(--muted); }
+.dedication .permanent-dedication { grid-column: 1; font: 400 24px/1.9 Cairo, sans-serif; color: var(--text); padding-top: 12px; }
+.waqf-share { grid-column: 1; margin-top: 22px; position: relative; }
+.share-main { min-width: 190px; }
+.share-panel {
+  display: grid;
+  width: min(260px, 100%);
+  min-width: 220px;
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  background: var(--emerald-panel);
+  color: var(--emerald-ink);
+}
+.share-panel[hidden] { display: none; }
+.share-panel a,
+.share-panel button {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: inherit;
   font: inherit;
   font-size: 14px;
+  text-align: start;
 }
-.share-platforms a { display: inline-flex; align-items: center; }
-.share-platforms a:hover,
-.share-platforms button:hover { background: var(--surface); text-decoration: none; }
-.share-status { min-height: 28px; margin-top: 11px; color: var(--muted); font-size: 13px; }
+.share-panel a:hover,
+.share-panel button:hover { background: var(--emerald-surface); text-decoration: none; }
+.share-panel > :last-child { border-bottom: 0; }
+.share-close { color: var(--emerald-muted) !important; }
+.share-status { min-height: 28px; margin-top: 10px; color: var(--muted); font-size: 13px; }
+
+.closing-effect { margin: -14px 0 28px; color: var(--muted); font-size: 14px; }
+
+/* The wide layout places this copy over the softest part of the light shift. */
+.opening[data-theme="light"] .hero-invitation > p,
+.opening[data-theme="light"] .hero-description > p { color: var(--action-ink); }
+
+@media (max-width: 1100px) {
+  .dedication-body { gap: 22px 60px; }
+}
 
 @media (max-width: 800px) {
-  .header-brand-space { width: 126px; flex-basis: 126px; }
-  .floating-brand { inset-inline-start: 8px; top: 4px; }
-  .floating-brand .mark-space { padding: 20px; }
-  .floating-brand .waqfa-mark { width: 24px; }
-  .floating-brand .wordmark { font-size: 30px; }
-  .day-rail { display: none; }
   .journey-progress { width: 2px; }
+  .day-rail-label { display: none; }
+  .day-rail { inset-inline-end: 11px; gap: 0; }
+  .day-rail-marker { height: 34px; opacity: .75; }
+  .dedication { width: calc(100% - 100px); }
+  .dedication-body { grid-template-columns: 1fr; }
+  .dedication .permanent-dedication, .waqf-share { grid-column: 1; }
 }
 
 @media (max-width: 620px) {
-  .header-brand-space { width: 112px; flex-basis: 112px; }
-  .floating-brand .brand { min-height: 70px; }
-  .floating-brand .mark-space { padding: 18px; }
-  .floating-brand .wordmark { font-size: 28px; }
-  .waqf-share { margin-top: 34px; padding-top: 26px; }
-  .waqf-share-heading { align-items: stretch; flex-direction: column; gap: 20px; }
-  .waqf-share h3 { font-size: 28px; }
-  .share-main { width: 100%; }
-  .share-platforms { gap: 7px; }
-  .share-platforms a,
-  .share-platforms button { flex: 1 1 calc(50% - 7px); justify-content: center; }
+  .floating-mark { inset-inline-end: 0; top: 0; }
+  .floating-mark-space { padding: 20px; }
+  .floating-mark .waqfa-mark { width: 24px; }
+  .day-rail { display: none; }
+  .dedication { padding-block: 120px 65px; }
+  .dedication-body { display: block; margin-top: 28px; }
+  .dedication h2 { font-size: clamp(42px, 13vw, 62px); margin-bottom: 25px; }
+  .dedication-body > p { font-size: 15px; }
+  .dedication .permanent-dedication { font-size: 19px; margin-top: 22px; }
+  .waqf-share { margin-top: 34px; }
+  .share-main { min-width: 180px; }
+  .share-panel { width: min(260px, calc(100vw - 44px)); }
+  .closing-effect { font-size: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .day-rail span { transition: none; }
+  .floating-mark { transition: none; }
 }

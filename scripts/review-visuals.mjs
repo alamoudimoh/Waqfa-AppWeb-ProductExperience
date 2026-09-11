@@ -4,17 +4,24 @@ import { resolve } from 'node:path'
 
 // Review production, including the real composited gradient behind each line
 // of text. axe may mark gradient contrast as needing manual review.
-const output = resolve('.sites-runtime/v2-review')
+const output = resolve('.sites-runtime/v3-1-review')
 await mkdir(output, { recursive: true })
 const browser = await chromium.launch()
 const results = []
+const setLocalHour = (page, hour) => page.addInitScript(value => {
+  Object.defineProperty(Date.prototype, 'getHours', { configurable: true, value: () => value })
+  Object.defineProperty(Date.prototype, 'getMinutes', { configurable: true, value: () => 0 })
+}, hour)
 try {
   for (const width of [390, 768, 1440, 1920]) {
     const page = await browser.newPage({ viewport: { width, height: 960 }, deviceScaleFactor: 1 })
+    await setLocalHour(page, 9)
     await page.goto('http://127.0.0.1:4173')
+    await page.locator('h1').waitFor()
     await page.evaluate(() => document.fonts.ready)
+    await page.waitForTimeout(300)
     await page.screenshot({ path: resolve(output, 'full-page-' + width + '.png'), fullPage: true })
-    await page.screenshot({ path: resolve(output, 'hero-' + width + '.png') })
+    await page.screenshot({ path: resolve(output, 'hero-morning-' + width + '.png') })
     const samples = await page.evaluate(() => {
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
       const lines = []
@@ -58,7 +65,22 @@ try {
       return { sampledLines: readings.length, minimum: Math.min(...readings.map(line => line.ratio)), belowAAA: readings.filter(line => line.ratio < 7) }
     }, { samples, png: 'data:image/png;base64,' + background.toString('base64') })
     results.push({ width, ...report })
+    await page.evaluate(() => scrollTo(0, 360))
+    await page.waitForTimeout(300)
+    await page.screenshot({ path: resolve(output, 'persistent-mark-' + width + '.png') })
+    await page.getByRole('button', { name: 'شارك وقفة' }).click()
+    await page.waitForTimeout(300)
+    await page.screenshot({ path: resolve(output, 'share-panel-' + width + '.png') })
     await page.close()
+
+    const nightPage = await browser.newPage({ viewport: { width, height: 960 }, deviceScaleFactor: 1 })
+    await setLocalHour(nightPage, 22)
+    await nightPage.goto('http://127.0.0.1:4173')
+    await nightPage.locator('h1').waitFor()
+    await nightPage.evaluate(() => document.fonts.ready)
+    await nightPage.waitForTimeout(300)
+    await nightPage.screenshot({ path: resolve(output, 'hero-night-' + width + '.png') })
+    await nightPage.close()
   }
 } finally {
   await browser.close()

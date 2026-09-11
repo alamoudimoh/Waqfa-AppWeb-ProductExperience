@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { sections, appUrl } from '../content'
 import { Arrow } from './Primitives'
+import { Brand } from './Brand'
 
 export function Header() {
   const [open, setOpen] = useState(false)
   return <header className="header shell">
-    <div className="header-brand-space" aria-hidden="true" />
+    <Brand />
     <nav className="desktop-nav" aria-label="التنقل الرئيسي">{sections.map(section => <a key={section.id} href={'#' + section.id}>{section.label}</a>)}</nav>
     <a className="header-entry" href={appUrl}>الدخول إلى وقفة<Arrow /></a>
     <button className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-nav" id="menu-button" onClick={() => setOpen(!open)}>{open ? 'إغلاق' : 'القائمة'}<span aria-hidden="true">{open ? '−' : '+'}</span></button>
