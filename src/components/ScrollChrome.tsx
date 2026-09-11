@@ -53,7 +53,7 @@ export function ScrollChrome({ initialTheme, initialPhase }: { initialTheme: Day
   return <>
     <a className={`floating-mark ${markVisible ? 'is-visible' : ''}`} data-theme={theme} href="#top" aria-label="وقفة، العودة إلى البداية" aria-hidden={!markVisible} tabIndex={markVisible ? 0 : -1}><span className="floating-mark-space"><Mark /></span></a>
     <div className="journey-progress" aria-hidden="true"><span style={{ transform: `scaleY(${progress})` }} /></div>
-    <div className="day-rail" data-theme={theme} role="status" aria-live="polite" aria-atomic="true">
+    <div className="day-rail" data-theme={theme} aria-hidden="true">
       <span className="day-rail-label">{journeyPhaseLabels[activePhase]}</span>
       <span className="day-rail-marker" aria-hidden="true"><i /></span>
     </div>
