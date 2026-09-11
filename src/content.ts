@@ -1,14 +1,19 @@
-export const appUrl = (() => {
+function httpsUrl(value: string | undefined, fallback: string) {
   try {
-    const url = new URL(import.meta.env.VITE_WAQFA_APP_URL || 'https://my.waqfa.app')
-    return url.protocol === 'https:' ? url.href : 'https://my.waqfa.app'
-  } catch { return 'https://my.waqfa.app' }
-})()
+    const url = new URL(value || fallback)
+    return url.protocol === 'https:' ? url.href : fallback
+  } catch {
+    return fallback
+  }
+}
+
+export const appUrl = httpsUrl(import.meta.env.VITE_WAQFA_APP_URL, 'https://my.waqfa.app')
+export const publicUrl = httpsUrl(import.meta.env.VITE_WAQFA_PUBLIC_URL, 'https://waqfa.app')
 
 export const sections = [
   { id: 'journey', label: 'وقفة في يومك' },
   { id: 'promise', label: 'على أمانة' },
-  { id: 'dedication', label: 'أصل وقفة' },
+  { id: 'dedication', label: 'الوقف' },
 ] as const
 
 export const sessions = [

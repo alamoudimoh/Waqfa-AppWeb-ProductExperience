@@ -1,12 +1,16 @@
 import { useLayoutEffect, useRef } from 'react'
 import type { ReactNode } from 'react'
+import type { DayPhase } from '../dayPhase'
 
 /**
  * One background for the document, anchored to its actual layout rather than
  * viewport or scroll position. ResizeObserver follows fonts, wrapping and tab
  * content. No scroll listener, animation loop or extra transition elements.
+ *
+ * V3 also lets the first visual atmosphere start from the visitor's local
+ * clock phase, without geolocation or a location permission.
  */
-export function DayEnvironment({ children }: { children: ReactNode }) {
+export function DayEnvironment({ children, startPhase }: { children: ReactNode; startPhase: DayPhase }) {
   const ref = useRef<HTMLDivElement>(null)
   useLayoutEffect(() => {
     const root = ref.current
@@ -14,9 +18,6 @@ export function DayEnvironment({ children }: { children: ReactNode }) {
     const sections = [...root.querySelectorAll<HTMLElement>('[data-phase]')]
     const update = () => {
       const origin = root.getBoundingClientRect().top
-      // Project layout coordinates onto the 168-degree light direction.
-      // Centre alignment keeps the transition anchored while light reaches
-      // different inline positions at different points in the day.
       const slope = Number(getComputedStyle(root).getPropertyValue('--light-inclination')) * Math.PI / 180
       const project = (y: number) => y * Math.cos(slope) + root.clientWidth * Math.sin(slope) / 2
       for (const section of sections) {
@@ -31,5 +32,5 @@ export function DayEnvironment({ children }: { children: ReactNode }) {
     sections.forEach(section => observer.observe(section))
     return () => observer.disconnect()
   }, [])
-  return <div className="day-environment" ref={ref}>{children}</div>
+  return <div className="day-environment" data-local-phase={startPhase} ref={ref}>{children}</div>
 }

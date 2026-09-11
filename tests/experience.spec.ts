@@ -14,7 +14,8 @@ test('reference integrity and official logo geometry', async ({ page }) => {
   const geometry = [...symbol.matchAll(/ d="([^"]+)"/g)].map(match => match[1])
   const css = readFileSync('src/tokens.css', 'utf8')
   for (const color of css.match(/#[\da-f]{6}\b/gi) || []) expect(reference + readFileSync('Waqfa-brand_identity.html', 'utf8')).toContain(color)
-  expect(readFileSync('src/styles.css', 'utf8')).not.toMatch(/#[\da-f]{3,8}\b|\b(?:rgba?|hsla?|oklch)\(/i)
+  const visualCss = readFileSync('src/styles.css', 'utf8') + readFileSync('src/v3.css', 'utf8')
+  expect(visualCss).not.toMatch(/#[\da-f]{3,8}\b|\b(?:rgba?|hsla?|oklch)\(/i)
   await page.goto('/')
   for (const mark of await page.locator('.waqfa-mark').all()) {
     expect(await mark.locator('path').evaluateAll(paths => paths.map(path => path.getAttribute('d')))).toEqual(geometry)
@@ -84,5 +85,48 @@ test('keyboard, RTL tabs, mobile navigation and reduced motion', async ({ page }
   await page.getByRole('button', { name: 'الحاسوب', exact: true }).click()
   await expect(page.locator('.resume-state')).toContainText('الموضع نفسه، على الحاسوب')
   expect(await page.locator('html').evaluate(el => getComputedStyle(el).scrollBehavior)).toBe('auto')
-  for (const link of await page.locator('a[href^="https:"]').all()) expect(await link.getAttribute('href')).toMatch(/^https:\/\/my\.waqfa\.app\/?$/)
+})
+
+test('local clock selects a morning opening without location permission', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(Date.prototype, 'getHours', { configurable: true, value: () => 9 })
+    Object.defineProperty(Date.prototype, 'getMinutes', { configurable: true, value: () => 0 })
+  })
+  await page.goto('/')
+  await expect(page.locator('.day-environment')).toHaveAttribute('data-local-phase', 'morning')
+  await expect(page.locator('.opening')).toHaveAttribute('data-theme', 'light')
+  await expect(page.locator('.masthead')).toHaveAttribute('data-theme', 'light')
+})
+
+test('local clock selects a night opening without location permission', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(Date.prototype, 'getHours', { configurable: true, value: () => 22 })
+    Object.defineProperty(Date.prototype, 'getMinutes', { configurable: true, value: () => 0 })
+  })
+  await page.goto('/')
+  await expect(page.locator('.day-environment')).toHaveAttribute('data-local-phase', 'night')
+  await expect(page.locator('.opening')).toHaveAttribute('data-theme', 'dark')
+  await expect(page.locator('.masthead')).toHaveAttribute('data-theme', 'dark')
+})
+
+test('persistent brand, journey progress and waqf sharing stay privacy-safe', async ({ page }) => {
+  await page.goto('/')
+  const brand = page.locator('.floating-brand')
+  await expect(brand).toBeVisible()
+  expect(await brand.evaluate(el => getComputedStyle(el).position)).toBe('fixed')
+  await expect(page.locator('.journey-progress')).toBeVisible()
+  await expect(page.getByRole('button', { name: 'شارك وقفة' })).toBeVisible()
+  await expect(page.getByText('محمد العمودي')).toHaveCount(0)
+
+  const hrefs = await page.locator('.share-platforms a').evaluateAll(links => links.map(link => (link as HTMLAnchorElement).href))
+  expect(hrefs).toHaveLength(4)
+  expect(hrefs.some(href => href.startsWith('https://wa.me/'))).toBe(true)
+  expect(hrefs.some(href => href.startsWith('https://t.me/share/'))).toBe(true)
+  expect(hrefs.some(href => href.startsWith('https://www.facebook.com/sharer/'))).toBe(true)
+  expect(hrefs.some(href => href.startsWith('https://twitter.com/intent/'))).toBe(true)
+
+  for (const link of await page.locator('a[href^="https:"]').all()) {
+    const href = await link.getAttribute('href')
+    expect(href).toMatch(/^https:\/\/(?:my\.waqfa\.app|waqfa\.app|wa\.me|t\.me|www\.facebook\.com|twitter\.com)(?:\/|$)/)
+  }
 })
